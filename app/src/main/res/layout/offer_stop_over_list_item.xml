@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <ImageButton
+        android:id="@+id/addStopOver"
+        android:layout_width="30.0dip"
+        android:layout_height="30.0dip"
+        android:layout_below="@+id/stopOverLabel"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="2.0dip"
+        android:layout_marginTop="15.0dip"
+        android:background="@drawable/addonicon"
+        android:gravity="center"
+        android:padding="3.0dip"
+        android:textSize="15.0dip" />
+
+    <com.example.shikhajain.shareride.commonui.RydeTextView
+        android:id="@id/stopOverLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15.0dip"
+        android:layout_toRightOf="@+id/addStopOver"
+        android:text="BOARDING POINTS"
+        android:textColor="#696464"
+        android:textSize="16.0dip" />
+
+    <com.example.shikhajain.shareride.commonui.RydeTextView
+        android:id="@+id/stopOverHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/addStopOver"
+        android:layout_marginLeft="8.0dip"
+        android:layout_toRightOf="@+id/stopOverLabel"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#d8d2d2"
+        android:textSize="18.0dip" />
+
+    <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+        android:id="@+id/stopOverLocation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stopOverLabel"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginTop="10.0dip"
+        android:layout_toRightOf="@+id/addStopOver"
+        android:hint="Stopover"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#d8d2d2"
+        android:textSize="15.0dip" />
+</RelativeLayout>
+
+    <!--android:focusable="false" android:focusableInTouchMode="false"-->

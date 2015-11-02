@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#c7c1c1"
+        android:nestedScrollingEnabled="true">
+
+        <RelativeLayout
+            android:id="@+id/sourceDestinationLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="20.0dip">
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/startingWhenLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECT SOURCE AND DESTINATION"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip" />
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/line"
+                android:layout_width="1.0dip"
+                android:layout_height="fill_parent"
+                android:layout_alignBottom="@+id/endLocationLayout"
+                android:layout_alignTop="@+id/startLocationLayout"
+                android:layout_below="@+id/startingWhenLabel"
+                android:layout_marginBottom="52.0dip"
+                android:layout_marginLeft="9.0dip"
+                android:layout_marginTop="15.0dip"
+                android:background="#d8d2d2" />
+
+            <include
+                android:id="@+id/startLocationLayout"
+                layout="@layout/offer_stop_list_item"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/startingWhenLabel"
+                android:layout_marginTop="20.0dip" />
+
+            <LinearLayout
+                android:id="@+id/stopOversParentLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/startLocationLayout"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/endLocationLayout"
+                layout="@layout/offer_stop_list_item"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stopOversParentLayout"
+                android:layout_marginTop="5.0dip" />
+
+           <!-- <include
+                android:id="@+id/stopOverLayout"
+                layout="@layout/offer_stop_over_list_item"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/endLocationLayout"
+                android:layout_marginTop="5.0dip" />-->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/returnJourneyLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sourceDestinationLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#FFFFFF"
+            android:padding="20.0dip">
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/isReturningLabel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/isReturningSwitcher"
+                android:text="IS THIS A RETURNING JOURNEY?"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip" />
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/startDateTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isReturningLabel"
+                android:layout_marginTop="15.0dip"
+                android:text="START DATE AND TIME"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/startDateTimeEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/startDateTimeLabel"
+                android:layout_marginTop="10.0dip"
+                android:editable="false"
+                android:hint="Journey Date and Time"
+                android:inputType="date"
+                android:paddingLeft="30.0dip"
+                android:paddingRight="30.0dip"
+                android:textColorHint="#d8d2d2"
+                android:textSize="12.0dip" />
+            <!-- <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#817a7a" android:id="@+id/startDateCalender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentLeft="true" />
+             <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="12.0dip" android:textColor="#d8d2d2" android:id="@+id/startTimeDropDown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentRight="true" />-->
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/isReturningSwitcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20.0dip"
+                android:checked="false"
+                android:textOff="NO"
+                android:textOn="YES"
+                android:theme="@style/Widget.AppCompat.CompoundButton.Switch" />
+            <!-- <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#4780e1" android:id="@+id/returningWhenLabel" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="RETURN DATE  TIME" android:layout_below="@+id/startDateTimeEditText" />
+             <com.example.shikhajain.shareride.commonui.RydeEditText android:textSize="18.0dip" android:textColorHint="#d8d2d2" android:id="@+id/returnDateTimeEditText" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:hint="Return Date and Time" android:layout_below="@+id/returningWhenLabel" />
+             <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#817a7a" android:id="@+id/returnDateCalender" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/returningWhenLabel" android:layout_alignBaseline="@+id/returnDateTimeEditText" android:layout_alignParentLeft="true" />
+             <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="18.0dip" android:textColor="#d8d2d2" android:id="@+id/returnTimeDropDown" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/returningWhenLabel" android:layout_alignBaseline="@+id/returnDateTimeEditText" android:layout_alignParentRight="true" />-->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/repeatRelativeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/returnJourneyLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#FFFFFF"
+            android:padding="15.0dip">
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/isRepeatingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/isRepeatingSwitcher"
+                android:text="I'll BE TRAVELLING MULTIPLE TIMES"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip"
+                android:visibility="visible" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/isRepeatingSwitcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textOff="NO"
+                android:textOn="YES"
+                android:theme="@style/Widget.AppCompat.CompoundButton.Switch" />
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/repeatInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/isRepeatingSwitcher"
+                android:layout_marginTop="5.0dip"
+                android:layout_toLeftOf="@+id/isRepeatingSwitcher"
+                android:maxLines="2"
+                android:text="Switch On if you travel on this route on regular basis"
+                android:textColor="#d8d2d2"
+                android:textSize="10.0dip"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="50.0dip"
+            android:layout_below="@+id/repeatRelativeLayout"
+            android:layout_marginTop="5.0dip"
+            android:background="#4780e1"
+            android:text="Next"
+            android:textColor="#FFFFFF"
+            android:textSize="25.0dip" />
+    </RelativeLayout>
+</ScrollView>

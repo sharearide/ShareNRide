@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/book_a_ride"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/each_user_view"
+        layout="@layout/each_user_view1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        >
+
+    </include>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number Of Seats"
+        android:id="@+id/textView5" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/Seat_Check" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Ride"
+        android:id="@+id/book_ride" />
+
+
+</LinearLayout>

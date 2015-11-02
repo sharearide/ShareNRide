@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/UImage"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user" />
+
+            <TextView
+                android:id="@+id/Uname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/UImage"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="51dp"
+                android:text="Arun Agarwal"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/UWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/UImage"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Accenture"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/No_Of_Seats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/Uname"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="3 seats available"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ImageButton
+                android:id="@+id/USrcDest"
+                android:layout_width="20dp"
+                android:layout_height="70dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/UImage"
+                android:paddingTop="10dp"
+                android:src="@drawable/share" />
+
+            <ImageView
+                android:id="@+id/UCarImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/logout" />
+
+            <TextView
+                android:id="@+id/Usource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/UImage"
+                android:layout_toEndOf="@+id/UCarImage"
+                android:layout_toRightOf="@+id/UCarImage"
+                android:paddingTop="10dp"
+                android:text="chembur"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/Udestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/USrcDest"
+                android:layout_alignLeft="@+id/Usource"
+                android:layout_alignStart="@+id/Usource"
+                android:text="Bandra"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/UTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/Usource"
+                android:text="Time"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/Ucar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/UCarImage"
+                android:layout_toEndOf="@+id/UCarImage"
+                android:layout_toRightOf="@+id/UCarImage"
+                android:paddingTop="10dp"
+                android:text="Car Name"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/UFare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/UTime"
+                android:layout_alignStart="@+id/UTime"
+                android:layout_alignTop="@+id/Ucar"
+                android:text="Fare"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <!--        <ProgressBar
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/pdialog"
+                        android:indeterminate="true" />-->
+            <!--
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="hello"/>-->
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,147 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/findride"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/findARide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        tools:context="com.example.shikhajain.shareride.Fragments.Find_A_Ride">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="WHERE DO YOU WANT TO GO?"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="20dp"
+            android:text="STARTING FROM"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+            android:id="@+id/Fsource"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="10dp"
+            android:hint="Source"
+            android:singleLine="true" />
+
+        <ImageButton
+
+            android:id="@+id/FsourceX"
+            android:layout_width="35dp"
+
+            android:layout_height="35dp"
+            android:layout_alignEnd="@+id/Fsource"
+            android:layout_alignRight="@+id/Fsource"
+            android:layout_alignTop="@+id/Fsource"
+            android:background="#fff"
+            android:src="@drawable/ic_home" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Fsource"
+            android:paddingTop="25dp"
+            android:text="GOING TO"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+            android:id="@+id/Fdestination"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="10dp"
+            android:hint="Destination" />
+
+        <ImageButton
+
+            android:id="@+id/FdestinationX"
+            android:layout_width="35dp"
+
+            android:layout_height="35dp"
+            android:layout_alignEnd="@+id/Fdestination"
+            android:layout_alignRight="@+id/Fdestination"
+            android:layout_alignTop="@+id/Fdestination"
+            android:background="#fff"
+            android:src="@drawable/ic_home" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Fdestination"
+            android:paddingTop="20dp"
+            android:text="DATE"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/Fdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="date"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Fdate"
+            android:paddingTop="25dp"
+            android:text="BOARDING POINTS"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+            android:id="@+id/Fboarding"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView5"
+            android:layout_marginTop="10dp"
+            android:hint="Stop Over" />
+
+
+        <Button
+            android:id="@+id/Fsearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="89dp"
+            android:text="SEARCH FOR RIDES"
+            android:textColor="#FFFFFF"
+            android:onClick="Fsearch"/>
+
+
+    </RelativeLayout>
+</FrameLayout>
