@@ -14,10 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 
 import com.example.shikhajain.shareride.AutoComplete.PlaceJSONParser;
@@ -62,12 +65,13 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
     private DatePickerDialog FPickDate;
     private TimePickerDialog FPickTime;
     private SimpleDateFormat dateFormatter;
-    EditText RDate;
+    EditText RDate, RTime, RSeat, RPrice, Rcomment;
     PlacesTask placesTask;
     ParserTask parserTask;
 
     private OnFragmentInteractionListener mListener;
-
+    ImageButton SeatPlus, SeatMinus,PriceMinus,PricePlus;
+    Button btnNext;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -180,6 +184,29 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         RDate.setOnClickListener(this);
         setDateTimeField();
         RDate.setOnFocusChangeListener(this);
+
+        RTime = (EditText)v.findViewById(R.id.startTimeEditText);
+        RTime.setOnClickListener(this);
+        setTimeField();
+
+        //For Seats
+        RSeat = (EditText)v.findViewById(R.id.availseatEditText);
+
+        SeatMinus = (ImageButton)v.findViewById(R.id.minusseat);
+        SeatPlus = (ImageButton)v.findViewById(R.id.plusseat);
+        SeatMinus.setOnClickListener(this);
+        SeatPlus.setOnClickListener(this);
+
+        //For Price
+        RPrice = (EditText)v.findViewById(R.id.priceseatEditText);
+
+        PriceMinus = (ImageButton)v.findViewById(R.id.minusprice);
+        PricePlus = (ImageButton)v.findViewById(R.id.plusprice);
+        PriceMinus.setOnClickListener(this);
+        PricePlus.setOnClickListener(this);
+
+        btnNext = (Button)v.findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(this);
         return v;
     }
 
@@ -197,7 +224,18 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
+    private void setTimeField(){
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        FPickTime = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                RTime.setText( selectedHour + ":" + selectedMinute);
+            }
+        }, hour, minute, true);//Yes 24 hour time
 
+    }
     private static String padding_str(int c) {
         if (c >= 10)
         return String.valueOf(c);
@@ -246,12 +284,51 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
     }
 
     public void onClick(View view) {
+        String seat_cnt = null;
+        int cnt = 0;
         switch(view.getId())
         {
             case R.id.startDateTimeEditText:
                 FPickDate.show();
                 break;
 
+            case R.id.startTimeEditText:
+                FPickTime.setTitle("Select Time");
+                FPickTime.show();
+                break;
+
+            case R.id.plusseat: seat_cnt = RSeat.getText().toString();
+            cnt = Integer.parseInt(seat_cnt);
+                cnt +=1;
+                RSeat.setText(String.valueOf(cnt));
+            break;
+
+            case R.id.minusseat:
+                seat_cnt = RSeat.getText().toString();
+                cnt = Integer.parseInt(seat_cnt);
+                cnt -=1;
+                if (cnt >= 0) {
+                    RSeat.setText(String.valueOf(cnt));
+                }
+                break;
+
+            case R.id.plusprice: seat_cnt = RPrice.getText().toString();
+                cnt = Integer.parseInt(seat_cnt);
+                cnt +=5;
+                RPrice.setText(String.valueOf(cnt));
+                break;
+
+            case R.id.minusprice:
+                seat_cnt = RPrice.getText().toString();
+                cnt = Integer.parseInt(seat_cnt);
+                cnt -=5;
+                if (cnt >= 0) {
+                    RPrice.setText(String.valueOf(cnt));
+                }
+                break;
+            case R.id.btn_next:
+                //Rcomment.getText.toStirng will contain the comment.
+                break;
         }
 
     }

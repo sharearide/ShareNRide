@@ -3,35 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
-    <TextView
-        android:id="@+id/txtLabel"
-         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16dp"
-        android:text="Home View"/>
-    
-    <ImageView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:src="@drawable/ic_home"
+
+    <ImageView android:layout_width="400dip"
+        android:layout_height="400dip"
+        android:id="@+id/icon_sr"
+        android:src="@mipmap/ic_sr"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 
     <Button
+        android:layout_below="@+id/icon_sr"
         android:id="@+id/offer_ride"
-        android:layout_width="wrap_content"
+        android:layout_width="175dip"
         android:layout_height="wrap_content"
         android:text="Offer A Ride"
-        android:onClick="OfferRide"/>
+        android:onClick="OfferRide"
+        android:background="@color/colorBase"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/req_ride"
-        android:layout_width="wrap_content"
+        android:layout_below="@+id/icon_sr"
+        android:layout_width="175dip"
         android:layout_height="wrap_content"
         android:text="Find A Ride"
         android:onClick="FindRide"
-        android:layout_toRightOf="@+id/offer_ride"/>
+        android:layout_alignRight="@+id/icon_sr"
+        android:layout_marginLeft="10dip"
+        android:layout_toRightOf="@+id/offer_ride"
+        android:background="@color/colorBase"
+        android:textColor="#FFFFFF"/>
     
 
 </RelativeLayout>

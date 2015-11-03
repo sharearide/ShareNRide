@@ -172,10 +172,10 @@ public class MainActivity extends FragmentActivity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			//fragment = new FindPeopleFragment();
+			fragment = new Find_A_Ride();
 			break;
 		case 2:
-			//fragment = new PhotosFragment();
+			fragment = new Offer_a_Ride();
 			break;
 		case 3:
 			//fragment = new CommunityFragment();
