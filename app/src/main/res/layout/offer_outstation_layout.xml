@@ -213,13 +213,16 @@
                 android:layout_marginLeft="10dip"
                 android:textAlignment="center"/>
 
+
             <ImageButton
                 android:id="@+id/minusseat"
-                android:layout_width="25dip"
-                android:layout_height="25dip"
-                android:src="@drawable/minus"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
                 android:layout_toRightOf="@+id/availseatEditText"
-                android:layout_marginLeft="10dip"/>
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/subicon"
+                android:padding="3.0dip"
+                android:textSize="15.0dip" />
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
                 android:id="@+id/priceseat"
@@ -252,7 +255,7 @@
                 android:background="@drawable/addonicon"
                 android:padding="3.0dip"
                 android:textSize="15.0dip"
-                android:layout_marginTop="40dip"
+                android:layout_marginTop="39dip"
                 />
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -277,15 +280,18 @@
                 android:layout_below="@id/availseatEditText"
                 android:layout_alignBaseline="@id/priceseat"/>
 
+
             <ImageButton
                 android:id="@+id/minusprice"
-                android:layout_width="25dip"
-                android:layout_height="25dip"
-                android:src="@drawable/minus"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
                 android:layout_toRightOf="@+id/priceseatEditText"
-                android:layout_marginLeft="10dip"
-                android:layout_below="@+id/availseat"
-                android:layout_marginTop="40dip"/>
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/subicon"
+                android:padding="3.0dip"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/minusseat"
+                android:layout_marginTop="28.0dip"/>
 
         </RelativeLayout>
 
