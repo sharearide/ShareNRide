@@ -104,7 +104,7 @@
 
             <EditText
                 android:id="@+id/startDateTimeEditText"
-                android:layout_width="fill_parent"
+                android:layout_width="150.0dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/startDateTimeLabel"
                 android:layout_marginTop="10.0dip"
@@ -115,22 +115,25 @@
                 android:paddingRight="30.0dip"
                 android:textColorHint="#d8d2d2"
                 android:textSize="12.0dip"
-                android:textColor="#c7c1c1"/>
+                android:textColor="@color/DarkGrey"/>
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
                 android:id="@+id/startTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15.0dip"
                 android:text="START TIME"
                 android:textColor="#4780e1"
                 android:textSize="15.0dip"
                 android:visibility="visible"
-                android:layout_below="@+id/startDateTimeEditText"/>
+                android:layout_alignTop="@+id/startDateTimeLabel"
+                android:layout_toRightOf="@+id/startDateTimeEditText"
+                android:layout_toEndOf="@+id/startDateTimeEditText"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp" />
 
             <EditText
                 android:id="@+id/startTimeEditText"
-                android:layout_width="fill_parent"
+                android:layout_width="150.0dip"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/startTimeLabel"
                 android:layout_marginTop="10.0dip"
@@ -141,7 +144,9 @@
                 android:paddingRight="30.0dip"
                 android:textColorHint="#d8d2d2"
                 android:textSize="12.0dip"
-                android:textColor="#c7c1c1"/>
+                android:layout_marginLeft="20.0dip"
+                android:textColor="@color/DarkGrey"
+                android:layout_toRightOf="@+id/startDateTimeEditText"/>
             <!-- <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#817a7a" android:id="@+id/startDateCalender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentLeft="true" />
              <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="12.0dip" android:textColor="#d8d2d2" android:id="@+id/startTimeDropDown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentRight="true" />
             <android.support.v7.widget.SwitchCompat
@@ -179,13 +184,23 @@
                 android:textSize="15.0dip"
                 android:visibility="visible" />
 
-            <ImageButton
+          <!--  <ImageButton
                 android:id="@+id/plusseat"
                 android:layout_width="25dip"
                 android:layout_height="25dip"
                 android:src="@drawable/plus"
                 android:layout_toRightOf="@+id/availseat"
-                android:layout_marginLeft="50dip"/>
+                android:layout_marginLeft="50dip"/>-->
+
+            <ImageButton
+                android:id="@+id/plusseat"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_toRightOf="@+id/availseat"
+                android:layout_marginLeft="50.0dip"
+                android:background="@drawable/addonicon"
+                android:padding="3.0dip"
+                android:textSize="15.0dip" />
 
             <EditText
                 android:layout_width="60dip"
@@ -193,7 +208,7 @@
                 android:id="@+id/availseatEditText"
                 android:layout_toRightOf="@+id/plusseat"
                 android:visibility="visible"
-                android:textColor="@color/list_background_pressed"
+                android:textColor="@color/DarkGrey"
                 android:text="3"
                 android:layout_marginLeft="10dip"
                 android:textAlignment="center"/>
@@ -218,7 +233,7 @@
                 android:layout_below="@+id/availseat"
                 android:layout_marginTop="40dip"/>
 
-            <ImageButton
+         <!--   <ImageButton
                 android:id="@+id/plusprice"
                 android:layout_width="25dip"
                 android:layout_height="25dip"
@@ -226,7 +241,19 @@
                 android:layout_toRightOf="@+id/priceseat"
                 android:layout_alignLeft="@+id/plusseat"
                 android:layout_below="@+id/availseat"
-                android:layout_marginTop="40dip"/>
+                android:layout_marginTop="40dip"/>-->
+            <ImageButton
+                android:id="@+id/plusprice"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_toRightOf="@+id/priceseat"
+                android:layout_marginLeft="50.0dip"
+                android:layout_below="@+id/availseat"
+                android:background="@drawable/addonicon"
+                android:padding="3.0dip"
+                android:textSize="15.0dip"
+                android:layout_marginTop="40dip"
+                />
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
                 android:layout_width="wrap_content"
@@ -234,7 +261,7 @@
                 android:text="Rs:"
                 android:layout_toRightOf="@+id/plusprice"
                 android:layout_alignBaseline="@+id/priceseat"
-                android:textColor="@color/list_background_pressed"
+                android:textColor="@color/DarkGrey"
                 android:layout_marginLeft="5dip"
                 />
             <EditText
@@ -243,7 +270,7 @@
                 android:id="@+id/priceseatEditText"
                 android:layout_toRightOf="@+id/plusprice"
                 android:visibility="visible"
-                android:textColor="@color/list_background_pressed"
+                android:textColor="@color/DarkGrey"
                 android:text="10"
                 android:layout_marginLeft="15dip"
                 android:textAlignment="center"

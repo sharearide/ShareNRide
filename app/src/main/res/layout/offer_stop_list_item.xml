@@ -40,7 +40,7 @@
             android:hint="Source"
             android:paddingRight="30.0dip"
             android:singleLine="true"
-            android:textColor="#000000"
+            android:textColor="@color/DarkGrey"
             android:textColorHint="#d8d2d2"
             android:textSize="15.0dip" />
 
