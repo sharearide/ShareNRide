@@ -192,7 +192,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         });*/
 
         //RelativeLayout dateTime = (RelativeLayout)v.findViewById(R.id.returnJourneyLayout);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
         RDate=(EditText)v.findViewById(R.id.startDateTimeEditText);
         RDate.setOnClickListener(this);
         setDateTimeField();
@@ -502,8 +502,8 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         data_list.add(new BasicNameValuePair("destination", RDestination.getText().toString()));
         data_list.add(new BasicNameValuePair("date", RDate.getText().toString()));
         data_list.add(new BasicNameValuePair("time", RTime.getText().toString() ));
-        data_list.add(new BasicNameValuePair("latitude","Not Required"));
-        data_list.add(new BasicNameValuePair("longitude","Not Required"));
+        data_list.add(new BasicNameValuePair("latitude","0"));
+        data_list.add(new BasicNameValuePair("longitude","0"));
         data_list.add(new BasicNameValuePair("vehicleId", "1"));
         data_list.add(new BasicNameValuePair("seats", RSeat.getText().toString()));
         data_list.add(new BasicNameValuePair("fare", RPrice.getText().toString()));
@@ -517,6 +517,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
             BufferedReader br = new BufferedReader(new InputStreamReader(send_response.getEntity().getContent()));
             String line = br.readLine();
             Toast.makeText(getActivity(), line, Toast.LENGTH_LONG).show();
+            Log.d("Response",line);
         } catch (Exception e) {
             System.err.println(e);
         }

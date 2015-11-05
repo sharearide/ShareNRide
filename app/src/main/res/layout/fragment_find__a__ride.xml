@@ -1,172 +1,200 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/findride"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:background="#c7c1c1">
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
 
+    >
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/findARide"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        tools:context="com.example.shikhajain.shareride.Fragments.Find_A_Ride"
-        android:background="#FFFFFF">
+        android:layout_height="fill_parent"
+        android:background="#c7c1c1"
+        android:nestedScrollingEnabled="true">
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="WHERE DO YOU WANT TO GO?"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBase"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="20dp"
-            android:text="STARTING FROM"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000"/>
-
-        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
-            android:id="@+id/Fsource"
+        <RelativeLayout
+            android:id="@+id/sourceDestinationLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_marginTop="10dp"
-            android:hint="Source"
-            android:singleLine="true"
-            android:textColor="@color/DarkGrey"/>
+            android:background="#FFFFFF"
+            android:padding="20.0dip">
 
-        <ImageButton
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/startingWhenLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECT SOURCE AND DESTINATION"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip" />
 
-            android:id="@+id/FsourceX"
-            android:layout_width="35dp"
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/line"
+                android:layout_width="1.0dip"
+                android:layout_height="fill_parent"
+                android:layout_alignBottom="@+id/endLocationLayout"
+                android:layout_alignTop="@+id/startLocationLayout"
+                android:layout_below="@+id/startingWhenLabel"
+                android:layout_marginBottom="52.0dip"
+                android:layout_marginLeft="9.0dip"
+                android:layout_marginTop="15.0dip"
+                android:background="#d8d2d2" />
 
-            android:layout_height="35dp"
-            android:layout_alignEnd="@+id/Fsource"
-            android:layout_alignRight="@+id/Fsource"
-            android:layout_alignTop="@+id/Fsource"
-            android:background="#fff"
-            android:src="@drawable/x" />
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/fromLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0dip"
+                android:layout_toLeftOf="@+id/crossIcon"
+                android:layout_toRightOf="@+id/itemIcon"
+                android:text="FROM "
+                android:textColor="#696464"
+                android:textSize="15.0dip"
+                android:layout_marginTop="20.0dip"/>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/Fsource"
-            android:paddingTop="25dp"
-            android:text="GOING TO"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000"/>
+            <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+                android:id="@+id/Fsource"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fromLabel"
+                android:layout_marginLeft="15.0dip"
+                android:layout_toRightOf="@+id/itemIcon"
+                android:hint="Source"
+                android:paddingRight="30.0dip"
+                android:singleLine="true"
+                android:textColor="@color/DarkGrey"
+                android:textColorHint="#d8d2d2"
+                android:textSize="15.0dip" />
 
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/toLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0dip"
+                android:layout_toLeftOf="@+id/crossIcon"
+                android:layout_toRightOf="@+id/itemIcon"
+                android:text="TO "
+                android:textColor="#696464"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/Fsource"
+                android:layout_marginTop="10.0dip"/>
 
-        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
-            android:id="@+id/Fdestination"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_marginTop="10dp"
-            android:hint="Destination"
-            android:textColor="@color/DarkGrey"/>
+            <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+                android:id="@+id/Fdestination"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toLabel"
+                android:layout_marginLeft="15.0dip"
+                android:layout_toRightOf="@+id/itemIcon"
+                android:hint="Destination"
+                android:paddingRight="30.0dip"
+                android:singleLine="true"
+                android:textColor="@color/DarkGrey"
+                android:textColorHint="#d8d2d2"
+                android:textSize="15.0dip" />
 
-        <ImageButton
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/stopOverLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15.0dip"
+                android:layout_toRightOf="@+id/addStopOver"
+                android:text="BOARDING POINTS"
+                android:textColor="#696464"
+                android:textSize="16.0dip"
+                android:layout_below="@+id/Fdestination"
+                android:layout_marginTop="10.0dip"/>
+            <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
+                android:id="@+id/Fboarding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stopOverLabel"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:layout_toRightOf="@+id/addStopOver"
+                android:hint="Stopover"
+                android:singleLine="true"
+                android:textColor="@color/DarkGrey"
+                android:textColorHint="#d8d2d2"
+                android:textSize="15.0dip" />
 
-            android:id="@+id/FdestinationX"
-            android:layout_width="35dp"
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/FsourceX"
+                android:layout_alignTop="@+id/Fsource"
+                android:layout_alignRight="@+id/Fsource"
+                android:layout_alignEnd="@+id/Fsource"
+                android:src="@drawable/x" />
 
-            android:layout_height="35dp"
-            android:layout_alignEnd="@+id/Fdestination"
-            android:layout_alignRight="@+id/Fdestination"
-            android:layout_alignTop="@+id/Fdestination"
-            android:background="#fff"
-            android:src="@drawable/x" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/FdestinationX"
+                android:layout_above="@+id/stopOverLabel"
+                android:layout_alignRight="@+id/Fdestination"
+                android:layout_alignEnd="@+id/Fdestination"
+                android:src="@drawable/x" />
         </RelativeLayout>
-<RelativeLayout
-    android:id="@+id/datelayout"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/findARide"
-    android:layout_marginTop="230.0dip"
-    android:background="#FFFFFF"
-    android:paddingBottom="10.0dip">
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:text="DATE"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBase"/>
 
-        <EditText
-            android:id="@+id/Fdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:editable="false"
-            android:ems="10"
-            android:inputType="date"
-            android:paddingTop="10dp"
-            android:textColor="@color/DarkGrey"
-            android:hint="Journey Date"
-            android:textColorHint="@color/counter_text_color"/>
-</RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/boardlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/datelayout"
-        android:layout_marginTop="338.0dip"
-        android:background="#FFFFFF"
-        >
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:paddingTop="25dp"
-            android:text="BOARDING POINTS"
-            android:textColor="@color/colorBase"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-        <com.example.shikhajain.shareride.AutoComplete.CustomAutoCompleteTextView
-            android:id="@+id/Fboarding"
+        <RelativeLayout
+            android:id="@+id/returnJourneyLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView5"
-            android:layout_marginTop="10dp"
-            android:hint="Stop Over"
-            android:textColor="@color/DarkGrey"/>
+            android:layout_below="@+id/sourceDestinationLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#FFFFFF"
+            android:padding="20.0dip">
 
+            <!--  <com.example.shikhajain.shareride.commonui.RydeTextView
+                  android:id="@+id/isReturningLabel"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:layout_toLeftOf="@+id/isReturningSwitcher"
+                  android:text="IS THIS A RETURNING JOURNEY?"
+                  android:textColor="#4780e1"
+                  android:textSize="15.0dip" />-->
+
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/startDateTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15.0dip"
+                android:text="START DATE "
+                android:textColor="#4780e1"
+                android:textSize="15.0dip"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/Fdate"
+                android:layout_width="150.0dip"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/startDateTimeLabel"
+                android:layout_marginTop="10.0dip"
+                android:editable="false"
+                android:hint="Journey Date "
+                android:inputType="date"
+                android:paddingLeft="30.0dip"
+                android:paddingRight="30.0dip"
+                android:textColorHint="#d8d2d2"
+                android:textSize="12.0dip"
+                android:textColor="@color/DarkGrey"/>
+
+
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/Fsearch"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:text="SEARCH FOR RIDES"
+            android:layout_width="match_parent"
+            android:layout_height="50.0dip"
+            android:layout_below="@+id/returnJourneyLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#4780e1"
+            android:text="Find Ride"
             android:textColor="#FFFFFF"
-            android:onClick="Fsearch"
-            android:background="@color/colorBase"/>
-
-</RelativeLayout>
-
-</FrameLayout>
+            android:textSize="25.0dip"
+            android:onClick="Fsearch"/>
+    </RelativeLayout>
+</ScrollView>

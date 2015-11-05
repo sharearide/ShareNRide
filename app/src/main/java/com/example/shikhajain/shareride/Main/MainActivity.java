@@ -1,14 +1,13 @@
-package com.example.shikhajain.shareride;
+package com.example.shikhajain.shareride.Main;
 
 import com.example.shikhajain.shareride.Fragments.Find_A_Ride;
 import com.example.shikhajain.shareride.Fragments.Find_Ride_Search_Result;
 import com.example.shikhajain.shareride.Fragments.Offer_a_Ride;
+import com.example.shikhajain.shareride.R;
 import com.example.shikhajain.shareride.adapter.NavDrawerListAdapter;
 import com.example.shikhajain.shareride.model.NavDrawerItem;
 
 import java.util.ArrayList;
-
-import android.app.Activity;
 
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -176,15 +175,6 @@ public class MainActivity extends FragmentActivity {
 			break;
 		case 2:
 			fragment = new Offer_a_Ride();
-			break;
-		case 3:
-			//fragment = new CommunityFragment();
-			break;
-		case 4:
-			//fragment = new PagesFragment();
-			break;
-		case 5:
-			//fragment = new WhatsHotFragment();
 			break;
 
 		default:
