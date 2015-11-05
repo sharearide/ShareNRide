@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import com.example.shikhajain.shareride.AutoComplete.PlaceJSONParser;
@@ -37,10 +39,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -101,6 +112,8 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        StrictMode.ThreadPolicy tr = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(tr);
     }
 
     @Override
@@ -328,6 +341,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
                 break;
             case R.id.btn_next:
                 //Rcomment.getText.toStirng will contain the comment.
+                send_OfferRideData();
                 break;
         }
 
@@ -472,5 +486,42 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
             urlConnection.disconnect();
         }
         return data;
+    }
+
+    public void send_OfferRideData()
+    {
+        // if (req_id == res_id) {
+        //   Bundle b1 = io.getExtras();
+
+        HttpClient hclient = new DefaultHttpClient();
+        HttpPost post_url = new HttpPost("http://allrounderservices.com/mypool/offer_ride.php");
+
+        List<NameValuePair> data_list = new ArrayList<NameValuePair>();
+        data_list.add(new BasicNameValuePair("userId", "1"));
+        data_list.add(new BasicNameValuePair("source", RSource.getText().toString()));
+        data_list.add(new BasicNameValuePair("destination", RDestination.getText().toString()));
+        data_list.add(new BasicNameValuePair("date", RDate.getText().toString()));
+        data_list.add(new BasicNameValuePair("time", RTime.getText().toString() ));
+        data_list.add(new BasicNameValuePair("latitude","Not Required"));
+        data_list.add(new BasicNameValuePair("longitude","Not Required"));
+        data_list.add(new BasicNameValuePair("vehicleId", "1"));
+        data_list.add(new BasicNameValuePair("seats", RSeat.getText().toString()));
+        data_list.add(new BasicNameValuePair("fare", RPrice.getText().toString()));
+
+        try {
+
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(data_list);
+            post_url.setEntity(entity);
+            HttpResponse send_response = hclient.execute(post_url);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(send_response.getEntity().getContent()));
+            String line = br.readLine();
+            Toast.makeText(getActivity(), line, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        //}
+        //else
+        //  Log.d("Req_id",res_id+","+req_id);
     }
 }
