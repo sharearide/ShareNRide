@@ -2,14 +2,17 @@ package com.example.shikhajain.shareride.Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+import com.example.shikhajain.shareride.Interface.Communicator;
 import com.example.shikhajain.shareride.Network.GetData;
 import com.example.shikhajain.shareride.POJO.Each_User;
 import com.example.shikhajain.shareride.R;
@@ -24,7 +27,7 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by bunty on 10/26/2015.
  */
-public class BookARide extends AppCompatActivity implements View.OnClickListener {
+public class BookARide extends Fragment implements View.OnClickListener {
 
     EditText no_of_seats;
     Button book_A_Ride;
@@ -32,23 +35,29 @@ public class BookARide extends AppCompatActivity implements View.OnClickListener
     ProgressDialog progressDialog;
     int seats_available;
     int seats_to_be_booked;
+    Communicator communicator;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.book_a_ride);
-
-        no_of_seats = (EditText) findViewById(R.id.Seat_Check);
-        book_A_Ride = (Button) findViewById(R.id.book_ride);
-        book_A_Ride.setOnClickListener(this);
-        each_user = getIntent().getParcelableExtra("user_data");
-        progressDialog = new ProgressDialog(this);
-
-
-        Toast.makeText(BookARide.this, "name is" + each_user.getUname(), Toast.LENGTH_SHORT).show();
-
-
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicator= (Communicator) getActivity();
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v=inflater.inflate(R.layout.book_a_ride,container,false);
+        no_of_seats = (EditText) v.findViewById(R.id.Seat_Check);
+        book_A_Ride = (Button) v.findViewById(R.id.book_ride);
+        book_A_Ride.setOnClickListener(this);
+        each_user = getArguments().getParcelable("user_data");
+        progressDialog = new ProgressDialog(getActivity());
+
+
+        Toast.makeText(getContext(), "name is" + each_user.getUname(), Toast.LENGTH_SHORT).show();
+        return v;
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -71,10 +80,10 @@ public class BookARide extends AppCompatActivity implements View.OnClickListener
                         String x = response.getString("seats_available");
                         seats_available = Integer.parseInt(x);
                         if (seats_available - seats_to_be_booked < 0) {
-                            Toast.makeText(getApplicationContext(), "reduce the number of seats", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "reduce the number of seats", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getApplicationContext(), "perfect", Toast.LENGTH_SHORT).show();
-                            callStatusOfRide();
+                            Toast.makeText(getContext(), "perfect", Toast.LENGTH_SHORT).show();
+                            callMainActivity();
 
                         }
 
@@ -101,14 +110,12 @@ public class BookARide extends AppCompatActivity implements View.OnClickListener
 
 
         } else {
-            Toast.makeText(this, "Enter the correct no of seats to be booked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Enter the correct no of seats to be booked", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void callStatusOfRide() {
-
-     RideStatus rideStatus=new RideStatus();
-        getSupportFragmentManager().beginTransaction().replace(R.id.book_a_ride,rideStatus).commit();
+    private void callMainActivity() {
+communicator.callRideStatus();
 
     }
 }

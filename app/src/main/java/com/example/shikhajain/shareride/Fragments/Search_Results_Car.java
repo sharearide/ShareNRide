@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.shikhajain.shareride.Interface.Communicator;
 import com.example.shikhajain.shareride.R;
 import com.example.shikhajain.shareride.adapter.AdapterSearchResult;
 import com.example.shikhajain.shareride.Network.GetData;
@@ -57,6 +58,7 @@ public class Search_Results_Car extends Fragment {
     //    Each_User each_user=new Each_User();
     ArrayList<Each_User> each_users = new ArrayList<>();
     ProgressDialog progressDialog;
+    Communicator communicator;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,6 +71,19 @@ public class Search_Results_Car extends Fragment {
      * @return A new instance of fragment Search_Results.
      */
     // TODO: Rename and change types and number of parameters
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicator= (Communicator) getActivity();
+
+    }
+
+
+
+
+
     public static Search_Results_Car newInstance(String param1, String param2) {
         Search_Results_Car fragment = new Search_Results_Car();
         Bundle args = new Bundle();
@@ -146,7 +161,7 @@ public class Search_Results_Car extends Fragment {
                 if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
 
                     Toast.makeText(getActivity(), "clicked", Toast.LENGTH_SHORT).show();
-                    sendDataToNextActivity(recyclerView.getChildPosition(child));
+                    sendDataToMainActivity(recyclerView.getChildPosition(child));
                     return true;
 
                 }
@@ -179,16 +194,19 @@ public class Search_Results_Car extends Fragment {
         return v;
     }
 
-    private void sendDataToNextActivity(int childPosition) {
+    private void sendDataToMainActivity(int childPosition) {
 
         each_users.get(childPosition);
 
 
         Log.d("data in the arraylist is", each_users.get(childPosition).getUname() + "");
-        Intent i=new Intent(getActivity(),BookARide.class);
+        /*Intent i=new Intent(getActivity(),BookARide.class);
         i.putExtra("user_data", each_users.get(childPosition));
 
-        startActivity(i);
+        startActivity(i);*/
+        Bundle bundle=new Bundle();
+        bundle.putParcelable("user_data", each_users.get(childPosition));
+        communicator.callBookARide(bundle);
 
     }
 

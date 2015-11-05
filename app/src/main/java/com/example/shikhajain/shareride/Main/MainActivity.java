@@ -1,14 +1,5 @@
 package com.example.shikhajain.shareride.Main;
 
-import com.example.shikhajain.shareride.Fragments.Find_A_Ride;
-import com.example.shikhajain.shareride.Fragments.Find_Ride_Search_Result;
-import com.example.shikhajain.shareride.Fragments.Offer_a_Ride;
-import com.example.shikhajain.shareride.R;
-import com.example.shikhajain.shareride.adapter.NavDrawerListAdapter;
-import com.example.shikhajain.shareride.model.NavDrawerItem;
-
-import java.util.ArrayList;
-
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -24,7 +15,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MainActivity extends FragmentActivity {
+import com.example.shikhajain.shareride.Fragments.BookARide;
+import com.example.shikhajain.shareride.Fragments.Find_A_Ride;
+import com.example.shikhajain.shareride.Fragments.Find_Ride_Search_Result;
+import com.example.shikhajain.shareride.Fragments.Offer_a_Ride;
+import com.example.shikhajain.shareride.Fragments.RideStatus;
+import com.example.shikhajain.shareride.Interface.Communicator;
+import com.example.shikhajain.shareride.R;
+import com.example.shikhajain.shareride.adapter.NavDrawerListAdapter;
+import com.example.shikhajain.shareride.model.NavDrawerItem;
+
+import java.util.ArrayList;
+
+public class MainActivity extends FragmentActivity implements Communicator{
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -114,6 +117,8 @@ public class MainActivity extends FragmentActivity {
 			displayView(0);
 		}
 	}
+
+
 
 	/**
 	 * Slide menu item click listener
@@ -227,21 +232,38 @@ public class MainActivity extends FragmentActivity {
 		Fragment fragment = new Find_A_Ride();
 		FragmentManager fragmentManager = getSupportFragmentManager() ;
 		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, fragment).commit();
+				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 	}
 
 	public void OfferRide(View v){
 		Fragment fragment = new Offer_a_Ride();
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, fragment).commit();
+				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 
 	}
 	public void Fsearch(View v){
 		Fragment fragment = new Find_Ride_Search_Result();
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, fragment).commit();
+				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 
+	}
+
+	@Override
+	public void callBookARide(Bundle each_user) {
+
+		BookARide bookARide = new BookARide ();
+
+		bookARide.setArguments(each_user);
+
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, bookARide).addToBackStack(null).commit();
+
+	}
+
+	@Override
+	public void callRideStatus() {
+		RideStatus rideStatus=new RideStatus();
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, rideStatus).addToBackStack(null).commit();
 	}
 }
