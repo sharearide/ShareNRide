@@ -83,7 +83,8 @@ public class BookARide extends Fragment implements View.OnClickListener {
                             Toast.makeText(getContext(), "reduce the number of seats", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "perfect", Toast.LENGTH_SHORT).show();
-                            callMainActivity();
+                            sendTheDetailsToServerForMapping();
+
 
                         }
 
@@ -112,6 +113,52 @@ public class BookARide extends Fragment implements View.OnClickListener {
         } else {
             Toast.makeText(getContext(), "Enter the correct no of seats to be booked", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void sendTheDetailsToServerForMapping() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.add("offer_ride_id", each_user.getUname());
+        requestParams.add("user_id","1");
+        requestParams.add("no_seats",no_of_seats.getText().toString());
+
+//        offer_ride_id=20&=1&no_seats=2
+        GetData.post(getResources().getString(R.string.book_ride), requestParams, new BaseJsonHttpResponseHandler<JSONObject>() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
+                //progressDialog.cancel();
+                Log.d("response for seat available is", response + "");
+                try {
+
+                    String error=response.getString("error");
+                    if(error.equals("0"))
+                    {
+                        callMainActivity();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, JSONObject errorResponse) {
+              //  progressDialog.cancel();
+            }
+
+            @Override
+            protected JSONObject parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+
+
+                JSONObject jsonObject = new JSONObject(rawJsonData);
+                progressDialog.cancel();
+                return jsonObject;
+            }
+        });
+
+
+
+
     }
 
     private void callMainActivity() {
