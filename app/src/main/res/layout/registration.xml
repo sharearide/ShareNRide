@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/txtEmail"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="182dp" />
+        android:layout_marginTop="182dp"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
     <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Email: "
-        android:id="@+id/textView8"
         android:layout_alignBottom="@+id/txtEmail"
         android:layout_toLeftOf="@+id/txtEmail"
-        android:layout_toStartOf="@+id/txtEmail" />
+        android:layout_toStartOf="@+id/txtEmail"
+        android:text="Email: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mobile: "
-        android:id="@+id/textView9"
-        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
+        android:layout_alignStart="@+id/textView8"
+        android:layout_centerVertical="true"
+        android:text="Mobile: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/editText"
         android:layout_alignBottom="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9"
         android:layout_toRightOf="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9" />
+        android:ems="10"
+        android:inputType="phone" />
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="100.0dip"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/btnRegister"
-        android:layout_marginTop="48dp"
         android:layout_below="@+id/editText"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
         android:background="@color/colorBase"
-        android:textColor="@color/list_background"/>
+        android:text="Register"
+        android:textColor="@color/list_background" />
 
 </RelativeLayout>
