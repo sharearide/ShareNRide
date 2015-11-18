@@ -29,6 +29,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
 
     public AdapterSearchResult(FragmentActivity activity, ArrayList<Each_User> each_users1) {
 
+
         layoutInflater = LayoutInflater.from(activity);
         this.context = activity;
         each_users.clear();
