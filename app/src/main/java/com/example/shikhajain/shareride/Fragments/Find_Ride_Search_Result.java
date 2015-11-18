@@ -68,6 +68,34 @@ public class Find_Ride_Search_Result extends Fragment implements MaterialTabList
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("on reume", "called");
+        Fragment fragment= Search_Results_Car.newInstance("", "");
+/*        ViewPagerAdapter adapter=new ViewPagerAdapter(getFragmentManager());
+
+
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // when user do a swipe the selected tab change
+                tabHost.setSelectedNavigationItem(position);
+            }
+        });*/
+
+
+
+/*        for (int i = 0; i < adapter.getCount(); i++) {
+            tabHost.addTab(
+                    tabHost.newTab()
+                            .setText(adapter.getPageTitle(i))
+                            .setTabListener(this)
+            );
+        }*/
+    }
+
+    @Override
     public void onTabSelected(MaterialTab materialTab) {
         viewPager.setCurrentItem(materialTab.getPosition());
     }
