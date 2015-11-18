@@ -22,22 +22,27 @@ import java.util.ArrayList;
  * Created by bunty on 10/5/2015.
  */
 public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResult.ViewHolderSearch> {
+
     private LayoutInflater layoutInflater;
     Context context;
     ArrayList<Each_User> each_users=new ArrayList<>();
-    public AdapterSearchResult(FragmentActivity activity) {
+
+    public AdapterSearchResult(FragmentActivity activity, ArrayList<Each_User> each_users1) {
 
         layoutInflater = LayoutInflater.from(activity);
         this.context = activity;
+        each_users.clear();
+        this.each_users = each_users1;
 
     }
 
     public void SetData(ArrayList<Each_User> each_users1)
     {
         each_users.clear();
-        this.each_users=each_users1;
+        this.each_users = each_users1;
         Log.d("array size in setdata is",each_users1.size()+"");
         notifyItemRangeChanged(0, each_users.size());
+        notifyDataSetChanged();
     }
 
     @Override
@@ -52,7 +57,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
     @Override
     public void onBindViewHolder(ViewHolderSearch holder, int position) {
         Log.d("on bind position",position+"");
-        Each_User each_user2=each_users.get(position);
+        Each_User each_user2 = each_users.get(position);
         holder.Uname.setText(each_user2.getUname());
 
 
@@ -68,9 +73,9 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
     }
 
 
-    class ViewHolderSearch extends RecyclerView.ViewHolder {
+    public static class ViewHolderSearch extends RecyclerView.ViewHolder {
 
-TextView Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
+        TextView Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
         ImageView Uimage;
         public ViewHolderSearch(View itemView) {
 
@@ -88,8 +93,6 @@ TextView Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
             Udestination=  (TextView) itemView.findViewById(R.id.Udestination);
             //Uimage= (ImageView) itemView.findViewById(R.id.UImage);
         }
-
-
 
     }
 

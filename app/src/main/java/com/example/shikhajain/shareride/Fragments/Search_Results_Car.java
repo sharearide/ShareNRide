@@ -130,16 +130,17 @@ public class Search_Results_Car extends Fragment {
 
         SeachView.setLayoutManager(new LinearLayoutManager(getActivity()));
         SeachView.setHasFixedSize(true);
-        adapterSearchResult = new AdapterSearchResult(getActivity());
-        progressDialog = new ProgressDialog(getActivity());
         //      swipeRefreshLayout.setOnRefreshListener(this);
-
+        progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Fetching The File....");
         progressDialog.show();
         DoJsonParsing();
 
-
-        SeachView.setAdapter(adapterSearchResult);
+        /*SeachView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        SeachView.setHasFixedSize(true);
+        adapterSearchResult = new AdapterSearchResult(getActivity());
+        progressDialog = new ProgressDialog(getActivity());
+        SeachView.setAdapter(adapterSearchResult);*/
 
 
         final GestureDetector mGestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -255,8 +256,12 @@ public class Search_Results_Car extends Fragment {
 
                     }
 
+
+                    adapterSearchResult = new AdapterSearchResult(getActivity(), each_users);
+                    SeachView.setAdapter(adapterSearchResult);
+
                     //              progressDialog.dismiss();
-                    adapterSearchResult.SetData(each_users);
+                   // adapterSearchResult.SetData(each_users);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
