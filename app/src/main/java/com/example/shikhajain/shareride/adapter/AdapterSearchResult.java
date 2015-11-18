@@ -23,6 +23,8 @@ import java.util.ArrayList;
  */
 public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResult.ViewHolderSearch> {
 
+
+
     private LayoutInflater layoutInflater;
     Context context;
     ArrayList<Each_User> each_users=new ArrayList<>();
