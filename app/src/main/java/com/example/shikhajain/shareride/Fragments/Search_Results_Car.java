@@ -136,6 +136,7 @@ public class Search_Results_Car extends Fragment {
         progressDialog.show();
         DoJsonParsing();
 
+
         /*SeachView.setLayoutManager(new LinearLayoutManager(getActivity()));
         SeachView.setHasFixedSize(true);
         adapterSearchResult = new AdapterSearchResult(getActivity());
@@ -193,6 +194,13 @@ public class Search_Results_Car extends Fragment {
 
 
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("on resume","called");
+        DoJsonParsing();
     }
 
     private void sendDataToMainActivity(int childPosition) {
