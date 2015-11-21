@@ -20,7 +20,10 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="170dp"
         android:hint="Username"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@color/DarkGrey"
+        android:textColorHint="#d8d2d2"
+        android:textSize="15.0dip"/>
 
 
     <EditText
@@ -35,7 +38,10 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:paddingTop="15dp" />
+        android:paddingTop="15dp"
+        android:textColor="@color/DarkGrey"
+        android:textColorHint="#d8d2d2"
+        android:textSize="15.0dip"/>
 
 
     <Button
