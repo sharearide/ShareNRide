@@ -2,6 +2,8 @@ package com.example.shikhajain.shareride.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,12 +16,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -80,6 +85,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
     PlacesTask placesTask;
     ParserTask parserTask;
 
+    Spinner vehicleType;
     private OnFragmentInteractionListener mListener;
     ImageButton SeatPlus, SeatMinus,PriceMinus,PricePlus;
     Button btnNext;
@@ -220,6 +226,17 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
 
         btnNext = (Button)v.findViewById(R.id.btn_next);
         btnNext.setOnClickListener(this);
+
+        vehicleType = (Spinner)v.findViewById(R.id.vehicleType);
+       /* Resources res = getResources();
+        ArrayAdapter dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, res.getStringArray(R.array.tabs) );
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        vehicleType.setAdapter(dataAdapter);*/
+
         return v;
     }
 
@@ -255,6 +272,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         else
         return "0" + String.valueOf(c);
     }
+
 
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -342,6 +360,8 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
             case R.id.btn_next:
                 //Rcomment.getText.toStirng will contain the comment.
                 send_OfferRideData();
+                Fragment rideStatus=new RideStatus();
+                getFragmentManager().beginTransaction().replace(R.id.frame_container,rideStatus).addToBackStack(null).commit();
                 break;
         }
 
