@@ -45,6 +45,25 @@ public class MainActivity extends FragmentActivity implements Communicator{
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		setLoginStatus();
+	}
+
+	private void setLoginStatus() {
+
+		 Login.sharedPreferencesLoginStatus= getSharedPreferences(Login.loginStatus, MODE_PRIVATE);
+		Login.editor = Login.sharedPreferencesLoginStatus.edit();
+
+//Set "hasLoggedIn" to true
+		Login.editor.putBoolean("hasLoggedIn", true);
+
+// Commit the edits!
+		Login.editor.commit();
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

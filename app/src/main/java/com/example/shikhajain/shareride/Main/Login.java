@@ -13,8 +13,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.shikhajain.shareride.Network.GetData;
 import com.example.shikhajain.shareride.R;
 import com.facebook.AccessToken;
@@ -39,7 +38,6 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
@@ -60,6 +58,9 @@ public class Login extends Activity implements View.OnClickListener
     private boolean mIsResolving = false;
     private boolean mShouldResolve = false;
     CallbackManager callbackManager;
+    static String loginStatus="loginStatus";
+    static SharedPreferences sharedPreferencesLoginStatus;
+     static SharedPreferences.Editor editor;
 
 
     Button login, fblogin;
@@ -69,8 +70,7 @@ public class Login extends Activity implements View.OnClickListener
 
     String name, pass,facebookname, fid, femail, id, headerCode, errorMessage, U_verified,
             U_name, U_email, U_police, U_address, U_number, U_landmark, U_image,U_gender;
-    SharedPreferences settings;
-    SharedPreferences.Editor editor;
+
     String GpersonName="",GpersonPhotoUrl="",GpersonGooglePlusProfile="";
 
 
@@ -170,9 +170,22 @@ public class Login extends Activity implements View.OnClickListener
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
                             Log.d("response is", response + "");
+                            try {
+                                String error=response.getString("error");
 
-                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(i);
+                                if(error.equals("0")) {
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(i);
+                                }
+                                else{
+                                    String error_message=response.getString("error_msg");
+                                    Toast.makeText(getApplication(),error_message,Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
                         }
 
                         @Override
@@ -282,7 +295,7 @@ public class Login extends Activity implements View.OnClickListener
 
     public void performLoginViaFacebookAndGmail(final String userid, final String facebookname, final String femail) {
 
-        System.out.println("login via fb called"+userid);
+  /*      System.out.println("login via fb called"+userid);
 
         RequestParams params = new RequestParams();
 
@@ -338,8 +351,8 @@ public class Login extends Activity implements View.OnClickListener
                     } else {
                         if (U_verified.equals("0")) {
 
-                            /*Intent i1 = new Intent(getApplicationContext(), Authentication.class);
-                            startActivity(i1);*/
+                            *//*Intent i1 = new Intent(getApplicationContext(), Authentication.class);
+                            startActivity(i1);*//*
                         } else {
                             if (errorMessage.equals("Please enter valid email or password")) {
 
@@ -376,7 +389,7 @@ public class Login extends Activity implements View.OnClickListener
             });
         } else {
             Toast.makeText(getApplicationContext(), "enter the details", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
 
 
@@ -471,13 +484,13 @@ public class Login extends Activity implements View.OnClickListener
 
     private void login() {
 
-/*        settings = getSharedPreferences(NavigationDrawer.PREFS_NAME, 0);
-        boolean hasLoggedIn = settings.getBoolean("hasLoggedIn", false);
+        sharedPreferencesLoginStatus = getSharedPreferences(Login.loginStatus, 0);
+        boolean hasLoggedIn = sharedPreferencesLoginStatus.getBoolean("hasLoggedIn", false);
         if (hasLoggedIn) {
-            Intent i = new Intent(this, NavigationDrawer.class);
+            Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
-            MainActivity.this.finish();
-        }*/
+            Login.this.finish();
+        }
     }
 
     @Override
@@ -521,7 +534,7 @@ public class Login extends Activity implements View.OnClickListener
 
     private void setfbloginsharedpreference() {
        // settings = getApplication().getSharedPreferences(NavigationDrawer.PREFS_NAME, 0);
-        editor = settings.edit();
+       // editor = settings.edit();
 
 //Set "hasLoggedIn" to true
         editor.putBoolean("fblogin", true);
