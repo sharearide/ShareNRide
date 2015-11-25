@@ -357,7 +357,7 @@
             android:layout_height="50.0dip"
             android:layout_below="@+id/Comment"
             android:layout_marginTop="5.0dip"
-            android:background="#4780e1"
+            android:background="@color/colorBase"
             android:text="Publish Ride"
             android:textColor="#FFFFFF"
             android:textSize="25.0dip" />

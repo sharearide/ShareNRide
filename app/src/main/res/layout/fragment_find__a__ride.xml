@@ -191,7 +191,7 @@
             android:layout_height="50.0dip"
             android:layout_below="@+id/returnJourneyLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#4780e1"
+            android:background="@color/colorBase"
             android:text="Find Ride"
             android:textColor="#FFFFFF"
             android:textSize="25.0dip"

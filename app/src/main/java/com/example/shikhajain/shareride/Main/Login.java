@@ -63,7 +63,7 @@ public class Login extends Activity implements View.OnClickListener
      static SharedPreferences.Editor editor;
 
 
-    Button login, fblogin;
+    Button login, fblogin, signup;
     EditText uname, upass;
     //    LoginButton loginButton;
     ProgressDialog progressDialog;
@@ -80,6 +80,7 @@ public class Login extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         //      FacebookSdk.sdkInitialize(this);
         setContentView(R.layout.login);
+        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.colorBase));
         setlayout();
         getvariables();
        /* fbkey();
@@ -87,6 +88,7 @@ public class Login extends Activity implements View.OnClickListener
         loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
         loginButton.registerCallback(callbackManager, this);*/
         login.setOnClickListener(this);
+        signup.setOnClickListener(this);
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -148,6 +150,7 @@ public class Login extends Activity implements View.OnClickListener
         //fblogin = (Button) findViewById(R.id.login_button);
         uname = (EditText) findViewById(R.id.Uname);
         upass = (EditText) findViewById(R.id.Upass);
+        signup = (Button)findViewById(R.id.USignUp);
         //findViewById(R.id.sign_in_button).setOnClickListener(this);
         //    loginButton = (LoginButton) findViewById(R.id.login_button);
     }
@@ -267,8 +270,12 @@ public class Login extends Activity implements View.OnClickListener
                 mGoogleApiClient.connect();
                 onSignInClicked();
                 break;*/
-
-
+            case R.id.USignUp:
+                Intent i = new Intent(getApplicationContext(),UserRegistration.class);
+                startActivity(i);
+                break;
+            default:
+                break;
         }
     }
 
