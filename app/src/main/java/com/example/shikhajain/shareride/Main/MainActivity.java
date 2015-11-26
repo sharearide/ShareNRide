@@ -1,5 +1,7 @@
 package com.example.shikhajain.shareride.Main;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -44,9 +46,10 @@ public class MainActivity extends FragmentActivity implements Communicator{
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+    private SharedPreferences sharedPreferencesLoginStatus;
 
 
-	@Override
+    @Override
 	protected void onStart() {
 		super.onStart();
 		setLoginStatus();
@@ -96,6 +99,8 @@ public class MainActivity extends FragmentActivity implements Communicator{
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		// What's hot, We  will add a counter here
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(5, -1)));
 		
 
 		// Recycle the typed array
@@ -200,6 +205,22 @@ public class MainActivity extends FragmentActivity implements Communicator{
 		case 2:
 			fragment = new Offer_a_Ride();
 			break;
+
+            case 6:
+                Login.sharedPreferencesLoginStatus= getSharedPreferences(Login.loginStatus, MODE_PRIVATE);
+                Login.editor = Login.sharedPreferencesLoginStatus.edit();
+
+//Set "hasLoggedIn" to true
+                Login.editor.putBoolean("hasLoggedIn", false);
+
+// Commit the edits!
+                Login.editor.commit();
+
+                Intent i=new Intent(this,Login.class);
+                startActivity(i);
+                MainActivity.this.finish();
+
+                break;
 
 		default:
 			break;

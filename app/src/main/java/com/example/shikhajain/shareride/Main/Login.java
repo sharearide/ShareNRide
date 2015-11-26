@@ -177,6 +177,7 @@ public class Login extends Activity implements View.OnClickListener
                                 String error=response.getString("error");
 
                                 if(error.equals("0")) {
+
                                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(i);
                                 }
@@ -204,6 +205,11 @@ public class Login extends Activity implements View.OnClickListener
                             return jsonObject;
                         }
                     });
+                }
+
+                else
+                {
+                    Toast.makeText(this,"enter all the details",Toast.LENGTH_SHORT).show();
                 }
                 //  GetData.post("login",params,new JsonHttpResponseHandler());
 /*
