@@ -3,14 +3,15 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/counter_text_color">
+    android:background="@color/blackText"
+    >
 
     <!-- Framelayout to display Fragments -->
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/list_background"/>
+        android:background="@color/blackText"/>
 
     <!-- Listview to display slider menu -->
     <ListView

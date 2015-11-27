@@ -163,6 +163,31 @@
              <com.example.shikhajain.shareride.commonui.RydeEditText android:textSize="18.0dip" android:textColorHint="#d8d2d2" android:id="@+id/returnDateTimeEditText" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:hint="Return Date and Time" android:layout_below="@+id/returningWhenLabel" />
              <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#817a7a" android:id="@+id/returnDateCalender" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/returningWhenLabel" android:layout_alignBaseline="@+id/returnDateTimeEditText" android:layout_alignParentLeft="true" />
              <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="18.0dip" android:textColor="#d8d2d2" android:id="@+id/returnTimeDropDown" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/returningWhenLabel" android:layout_alignBaseline="@+id/returnDateTimeEditText" android:layout_alignParentRight="true" />-->
+            <com.example.shikhajain.shareride.commonui.RydeTextView
+                android:id="@+id/vehicleTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Vehicle Type"
+                android:textColor="#4780e1"
+                android:textSize="15.0dip"
+                android:visibility="visible"
+                android:layout_below="@+id/startDateTimeEditText"
+                android:layout_marginTop="25.0dip"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vehicleType"
+                android:layout_toEndOf="@+id/startDateTimeLabel"
+                android:layout_toRightOf="@+id/vehicleTypeLabel"
+                android:textColor="@color/DarkGrey"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/startDateTimeEditText"
+                android:layout_alignBottom="@+id/vehicleTypeLabel"
+                android:spinnerMode="dropdown"
+                android:entries="@array/tabs"/>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -173,6 +198,7 @@
             android:layout_marginTop="25.0dip"
             android:background="#FFFFFF"
             android:padding="15.0dip">
+
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
                 android:id="@+id/availseat"
@@ -331,7 +357,7 @@
             android:layout_height="50.0dip"
             android:layout_below="@+id/Comment"
             android:layout_marginTop="5.0dip"
-            android:background="#4780e1"
+            android:background="@color/colorBase"
             android:text="Publish Ride"
             android:textColor="#FFFFFF"
             android:textSize="25.0dip" />

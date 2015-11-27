@@ -71,19 +71,6 @@ public class Search_Results_Car extends Fragment {
      * @return A new instance of fragment Search_Results.
      */
     // TODO: Rename and change types and number of parameters
-
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        communicator= (Communicator) getActivity();
-
-    }
-
-
-
-
-
     public static Search_Results_Car newInstance(String param1, String param2) {
         Search_Results_Car fragment = new Search_Results_Car();
         Bundle args = new Bundle();
@@ -93,6 +80,13 @@ public class Search_Results_Car extends Fragment {
         return fragment;
     }
 
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicator= (Communicator) getActivity();
+
+    }
     public static Search_Results_Car getInstance(int position)
 
     {

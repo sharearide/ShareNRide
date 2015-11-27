@@ -1,57 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="182dp"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
+    >
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtEmail"
-        android:layout_toLeftOf="@+id/txtEmail"
-        android:layout_toStartOf="@+id/txtEmail"
-        android:text="Email: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8"
-        android:layout_centerVertical="true"
-        android:text="Mobile: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#c7c1c1"
+        android:nestedScrollingEnabled="true">
+        <com.example.shikhajain.shareride.commonui.RydeTextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="30.0dip"
+            android:text="                   MY PROFILE"
+            android:textColor="#FFFFFF"
+            android:textSize="25.0dip"
+            android:background="@color/colorBase"
+            />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9"
-        android:layout_toRightOf="@+id/textView9"
-        android:ems="10"
-        android:inputType="phone" />
+        <RelativeLayout
+            android:id="@+id/sourceDestinationLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="20.0dip"
+            android:layout_marginTop="30.0dip">
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="100.0dip"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:background="@color/colorBase"
-        android:text="Register"
-        android:textColor="@color/list_background" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name: "
+                android:id="@+id/Tname"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Tname"
+                android:layout_alignBaseline="@+id/Tname"
+                android:textSize="15.0dip"
+                android:id="@+id/Pname"
+                android:textColor="@color/blackText"/>
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender: "
+                android:id="@+id/TGender"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/Tname"
+                android:layout_marginTop="30.0dip"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Pname"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:layout_marginTop="15.0dip"
+                android:id="@+id/GenderGroup">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:id="@+id/Pmale"
+                    android:textColor="@color/blackText"
+                    />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:id="@+id/Pfemale"
+                    android:textColor="@color/blackText"
+                    />
+            </RadioGroup>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/returnJourneyLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sourceDestinationLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#FFFFFF"
+            android:padding="20.0dip">
+
+            <!--  <com.example.shikhajain.shareride.commonui.RydeTextView
+                  android:id="@+id/isReturningLabel"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:layout_toLeftOf="@+id/isReturningSwitcher"
+                  android:text="IS THIS A RETURNING JOURNEY?"
+                  android:textColor="#4780e1"
+                  android:textSize="15.0dip" />-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:id="@+id/Temail"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Temail"
+                android:layout_alignBaseline="@+id/Temail"
+                android:textSize="15.0dip"
+                android:id="@+id/Pemail"
+                android:textColor="@color/blackText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password: "
+                android:id="@+id/Tpass"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/Temail"
+                android:layout_marginTop="30.0dip"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Tpass"
+                android:layout_alignBaseline="@+id/Tpass"
+                android:textSize="15.0dip"
+                android:id="@+id/Ppass"
+                android:inputType="textPassword"
+                android:textColor="@color/blackText"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile: "
+                android:id="@+id/Tmobile"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"
+                android:layout_below="@+id/Tpass"
+                android:layout_marginTop="30.0dip"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Tpass"
+                android:layout_alignBaseline="@+id/Tmobile"
+                android:textSize="15.0dip"
+                android:id="@+id/Pmobile"
+                android:inputType="number"
+                android:textColor="@color/blackText"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/repeatRelativeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/returnJourneyLayout"
+            android:layout_marginTop="25.0dip"
+            android:background="#FFFFFF"
+            android:padding="15.0dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile Photo: "
+                android:id="@+id/Tpic"
+                android:textColor="@color/colorBase"
+                android:textSize="15.0dip"/>
+
+            <ImageView
+                android:layout_width="150.0dip"
+                android:layout_height="150.0dip"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/user"/>
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="50.0dip"
+            android:layout_below="@+id/repeatRelativeLayout"
+            android:layout_marginTop="15.0dip"
+            android:background="@color/colorBase"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="25.0dip" />
+    </RelativeLayout>
+</ScrollView>
