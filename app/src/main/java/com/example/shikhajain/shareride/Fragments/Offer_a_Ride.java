@@ -261,7 +261,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         FPickTime = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                RTime.setText( selectedHour + ":" + selectedMinute);
+                RTime.setText( selectedHour + ":" + selectedMinute + ":00");
             }
         }, hour, minute, true);//Yes 24 hour time
 
@@ -525,6 +525,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         data_list.add(new BasicNameValuePair("latitude","0"));
         data_list.add(new BasicNameValuePair("longitude","0"));
         data_list.add(new BasicNameValuePair("vehicleId", "1"));
+        data_list.add(new BasicNameValuePair("vehicle_type",vehicleType.getSelectedItem().toString()));
         data_list.add(new BasicNameValuePair("seats", RSeat.getText().toString()));
         data_list.add(new BasicNameValuePair("fare", RPrice.getText().toString()));
 
@@ -538,6 +539,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
             String line = br.readLine();
             Toast.makeText(getActivity(), line, Toast.LENGTH_LONG).show();
             Log.d("Response",line);
+
         } catch (Exception e) {
             System.err.println(e);
         }

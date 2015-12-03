@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
+android:background="@color/DarkGreyBackground"
     >
 
     <RelativeLayout
@@ -10,23 +10,22 @@
 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#c7c1c1"
+        android:background="@color/DarkGreyBackground"
         android:nestedScrollingEnabled="true">
         <com.example.shikhajain.shareride.commonui.RydeTextView
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="30.0dip"
-            android:text="                   MY PROFILE"
+            android:text="                   My Profile"
             android:textColor="#FFFFFF"
             android:textSize="25.0dip"
-            android:background="@color/colorBase"
             />
 
         <RelativeLayout
             android:id="@+id/sourceDestinationLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip"
             android:layout_marginTop="30.0dip">
 
@@ -35,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="Full Name: "
                 android:id="@+id/Tname"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"/>
             <EditText
                 android:layout_width="match_parent"
@@ -44,14 +43,14 @@
                 android:layout_alignBaseline="@+id/Tname"
                 android:textSize="15.0dip"
                 android:id="@+id/Pname"
-                android:textColor="@color/blackText"/>
+                android:textColor="@color/WhiteText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender: "
                 android:id="@+id/TGender"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:layout_below="@+id/Tname"
                 android:layout_marginTop="30.0dip"/>
@@ -69,14 +68,14 @@
                     android:layout_height="wrap_content"
                     android:text="Male"
                     android:id="@+id/Pmale"
-                    android:textColor="@color/blackText"
+                    android:textColor="@color/WhiteText"
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
                     android:id="@+id/Pfemale"
-                    android:textColor="@color/blackText"
+                    android:textColor="@color/WhiteText"
                     />
             </RadioGroup>
 
@@ -88,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/sourceDestinationLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip">
 
             <!--  <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -106,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="Email: "
                 android:id="@+id/Temail"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"/>
             <EditText
                 android:layout_width="match_parent"
@@ -115,14 +114,15 @@
                 android:layout_alignBaseline="@+id/Temail"
                 android:textSize="15.0dip"
                 android:id="@+id/Pemail"
-                android:textColor="@color/blackText"/>
+                android:textColor="@color/WhiteText"
+                android:inputType="textEmailAddress"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password: "
                 android:id="@+id/Tpass"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:layout_below="@+id/Temail"
                 android:layout_marginTop="30.0dip"/>
@@ -135,13 +135,13 @@
                 android:textSize="15.0dip"
                 android:id="@+id/Ppass"
                 android:inputType="textPassword"
-                android:textColor="@color/blackText"/>
+                android:textColor="@color/WhiteText" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mobile: "
                 android:id="@+id/Tmobile"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:layout_below="@+id/Tpass"
                 android:layout_marginTop="30.0dip"/>
@@ -153,8 +153,10 @@
                 android:layout_alignBaseline="@+id/Tmobile"
                 android:textSize="15.0dip"
                 android:id="@+id/Pmobile"
-                android:inputType="number"
-                android:textColor="@color/blackText"/>
+                android:inputType="phone"
+                android:textColor="@color/WhiteText"
+                android:ems="10"
+                android:visibility="visible"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -163,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/returnJourneyLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="15.0dip">
 
             <TextView
@@ -171,27 +173,29 @@
                 android:layout_height="wrap_content"
                 android:text="Profile Photo: "
                 android:id="@+id/Tpic"
-                android:textColor="@color/colorBase"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"/>
 
             <ImageView
                 android:layout_width="150.0dip"
                 android:layout_height="150.0dip"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user"
+                android:id="@+id/userimage"/>
 
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@+id/userimage"
+                android:layout_marginTop="25.0dip"
+                android:background="@drawable/roundbutton"
+                android:text="Register"
+                android:textColor="#FFFFFF"
+                android:textSize="25.0dip" />
         </RelativeLayout>
 
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="50.0dip"
-            android:layout_below="@+id/repeatRelativeLayout"
-            android:layout_marginTop="15.0dip"
-            android:background="@color/colorBase"
-            android:text="Register"
-            android:textColor="#FFFFFF"
-            android:textSize="25.0dip" />
+
     </RelativeLayout>
 </ScrollView>

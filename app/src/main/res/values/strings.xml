@@ -36,7 +36,7 @@
     <string name="book_ride">select_ride</string>
     <string-array name="tabs">
 
-        <item>CAR</item>
+        <item>Car</item>
         <item>Two Wheeler</item>
         <item>Auto</item>
 

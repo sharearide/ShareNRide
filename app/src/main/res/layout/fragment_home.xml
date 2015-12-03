@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Offer A Ride"
         android:onClick="OfferRide"
-        android:background="@color/colorBase"
+        android:background="@drawable/roundbutton"
         android:textColor="#FFFFFF"
         />
 
@@ -32,7 +32,7 @@
         android:layout_alignRight="@+id/icon_sr"
         android:layout_marginLeft="10dip"
         android:layout_toRightOf="@+id/offer_ride"
-        android:background="@color/colorBase"
+        android:background="@drawable/roundbutton"
         android:textColor="#FFFFFF"/>
     
 
