@@ -52,6 +52,7 @@
                 android:layout_alignRight="@+id/UFare"
                 android:layout_alignEnd="@+id/UFare" />
 
+
             <TextView
                 android:id="@+id/No_Of_Seats"
                 android:layout_width="wrap_content"
@@ -59,9 +60,11 @@
                 android:text="3 seats available"
                 android:textColor="@color/WhiteText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_below="@+id/Udestination"
-                android:layout_alignRight="@+id/UTime"
-                android:layout_alignEnd="@+id/UTime" />
+                android:textSize="12.0dip"
+                android:layout_above="@+id/Udestination"
+                android:layout_alignRight="@+id/UWork"
+                android:paddingRight="10.0dip"
+                 />
 
             <ImageButton
                 android:id="@+id/USrcDest"
@@ -69,9 +72,9 @@
                 android:layout_height="70dp"
                 android:paddingTop="10dp"
                 android:src="@drawable/share"
-                android:layout_above="@+id/UCarImage"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_above="@+id/UCarImage" />
 
             <ImageView
                 android:id="@+id/UCarImage"
@@ -93,7 +96,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_alignTop="@+id/USrcDest"
                 android:layout_toRightOf="@+id/UCarImage"
-                android:layout_toEndOf="@+id/UCarImage" />
+                android:layout_toEndOf="@+id/UCarImage"
+                android:textSize="12.0dip"/>
 
             <TextView
                 android:id="@+id/Udestination"
@@ -104,18 +108,19 @@
                 android:layout_alignStart="@+id/Usource"
                 android:text="Bandra"
                 android:textColor="@color/WhiteText"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="12.0dip"/>
 
             <TextView
                 android:id="@+id/UTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/Usource"
                 android:text="Time"
                 android:textColor="@color/WhiteText"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="12.0dip"
+                android:layout_below="@+id/Ucar"
+                android:layout_centerHorizontal="true" />
 
             <TextView
                 android:id="@+id/Ucar"
@@ -127,7 +132,8 @@
                 android:paddingTop="10dp"
                 android:text="Car Name"
                 android:textColor="@color/WhiteText"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="12.0dip"/>
 
             <TextView
                 android:id="@+id/UFare"
@@ -136,9 +142,11 @@
                 android:text="Fare"
                 android:textColor="@color/WhiteText"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_below="@+id/No_Of_Seats"
-                android:layout_alignLeft="@+id/UTime"
-                android:layout_alignStart="@+id/UTime" />
+                android:textSize="12.0dip"
+                android:layout_alignTop="@+id/UTime"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:paddingRight="10.0dip"/>
 
             <!--        <ProgressBar
                         android:layout_width="150dp"
