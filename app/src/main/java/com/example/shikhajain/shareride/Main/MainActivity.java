@@ -282,11 +282,11 @@ public class MainActivity extends FragmentActivity implements Communicator{
 				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 
 	}
-	public void Fsearch(View v){
-		Fragment fragment = new Find_Ride_Search_Result();
-		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
+	public void Fsearch(String[] findARideDeatils){
+		Find_Ride_Search_Result find_ride_search_result = new Find_Ride_Search_Result();
+		find_ride_search_result.setArguments(findARideDeatils);
+
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, find_ride_search_result).addToBackStack(null).commit();
 
 	}
 

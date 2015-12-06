@@ -9,4 +9,5 @@ public interface Communicator {
 
     public void callBookARide(Bundle each_user);
     public void callRideStatus();
+    public void Fsearch(String[] findARideDeatils);
 }

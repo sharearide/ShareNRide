@@ -193,7 +193,7 @@
                 android:text="Find Ride"
                 android:textColor="#FFFFFF"
                 android:textSize="25.0dip"
-                android:onClick="Fsearch"/>
+                />
         </RelativeLayout>
 
 
