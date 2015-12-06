@@ -195,7 +195,7 @@ public class Search_Results_Car extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("on resume","called");
-        DoJsonParsing();
+//        DoJsonParsing();
     }
 
     private void sendDataToMainActivity(int childPosition) {
