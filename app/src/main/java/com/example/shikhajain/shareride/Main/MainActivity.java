@@ -20,6 +20,7 @@ import android.widget.ListView;
 import com.example.shikhajain.shareride.Fragments.BookARide;
 import com.example.shikhajain.shareride.Fragments.Find_A_Ride;
 import com.example.shikhajain.shareride.Fragments.Find_Ride_Search_Result;
+import com.example.shikhajain.shareride.Fragments.Fragment_ViewUser;
 import com.example.shikhajain.shareride.Fragments.Offer_a_Ride;
 import com.example.shikhajain.shareride.Fragments.RideStatus;
 import com.example.shikhajain.shareride.Interface.Communicator;
@@ -200,9 +201,12 @@ public class MainActivity extends FragmentActivity implements Communicator{
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new Find_A_Ride();
+			fragment = new Fragment_ViewUser();
 			break;
 		case 2:
+			fragment = new Find_A_Ride();
+			break;
+		case 3:
 			fragment = new Offer_a_Ride();
 			break;
 
@@ -282,7 +286,8 @@ public class MainActivity extends FragmentActivity implements Communicator{
 				.replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 
 	}
-	public void Fsearch(String[] findARideDeatils){
+
+   	public void Fsearch(String[] findARideDeatils){
 		Find_Ride_Search_Result find_ride_search_result = new Find_Ride_Search_Result();
 		find_ride_search_result.setArguments(findARideDeatils);
 
