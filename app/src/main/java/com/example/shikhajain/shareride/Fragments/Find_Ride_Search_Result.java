@@ -25,11 +25,19 @@ public class Find_Ride_Search_Result extends Fragment implements MaterialTabList
 
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
+    String RideDetails[];
 
 
     public Find_Ride_Search_Result() {
         // Required empty public constructor
     }
+
+public void setArguments(String[] findARideDeatils)
+{
+    this.RideDetails=findARideDeatils;
+}
+
+
 
 
 
@@ -71,7 +79,7 @@ public class Find_Ride_Search_Result extends Fragment implements MaterialTabList
     public void onResume() {
         super.onResume();
         Log.d("on reume", "called");
-        Fragment fragment= Search_Results_Car.newInstance("", "");
+       // Fragment fragment= Search_Results_Car.newInstance("", "");
 /*        ViewPagerAdapter adapter=new ViewPagerAdapter(getFragmentManager());
 
 
@@ -126,7 +134,7 @@ public class Find_Ride_Search_Result extends Fragment implements MaterialTabList
             {
                 case 0:
                     Log.d("call to","fagment 1");
-                    fragment= Search_Results_Car.newInstance("", "");
+                    fragment= Search_Results_Car.newInstance(RideDetails, "car");
                     break;
 
 

@@ -2,7 +2,6 @@ package com.example.shikhajain.shareride.Fragments;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -60,6 +59,8 @@ public class Search_Results_Car extends Fragment {
     ProgressDialog progressDialog;
     Communicator communicator;
 
+    String type;
+    String [] Ride_Details;
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -71,11 +72,11 @@ public class Search_Results_Car extends Fragment {
      * @return A new instance of fragment Search_Results.
      */
     // TODO: Rename and change types and number of parameters
-    public static Search_Results_Car newInstance(String param1, String param2) {
+    public static Search_Results_Car newInstance(String[] param1, String param2) {
         Search_Results_Car fragment = new Search_Results_Car();
         Bundle args = new Bundle();
-        args.putString("ride", param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putStringArray("Ride_Details", param1);
+        args.putString("type", param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -106,8 +107,8 @@ public class Search_Results_Car extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            Ride_Details = getArguments().getStringArray("Ride_Details");
+            type= getArguments().getString("type");
         }
     }
 
@@ -194,7 +195,7 @@ public class Search_Results_Car extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("on resume","called");
-        DoJsonParsing();
+//        DoJsonParsing();
     }
 
     private void sendDataToMainActivity(int childPosition) {
@@ -217,9 +218,11 @@ public class Search_Results_Car extends Fragment {
 
 
         final RequestParams requestParams = new RequestParams();
-        requestParams.add("Date", "04-08-2015");
-        requestParams.add("Source", "Nityanand Nagar, Mumbai, Maharashtra");
-        requestParams.add("Destination", "Nityanand Nagar, Mumbai, Maharashtra");
+        requestParams.add("Date", Ride_Details[2]);
+        requestParams.add("Source", Ride_Details[0]);
+        requestParams.add("Destination",Ride_Details[1]);
+
+
         GetData.post("request_ride", requestParams, new BaseJsonHttpResponseHandler<JSONObject>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {

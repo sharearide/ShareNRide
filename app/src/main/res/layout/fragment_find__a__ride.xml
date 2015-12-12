@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
+    android:background="@color/DarkGreyBackground"
     >
 
     <RelativeLayout
@@ -10,14 +10,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#c7c1c1"
+        android:background="@color/DarkGreyBackground"
         android:nestedScrollingEnabled="true">
 
         <RelativeLayout
             android:id="@+id/sourceDestinationLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip">
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SELECT SOURCE AND DESTINATION"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip" />
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -48,7 +48,7 @@
                 android:layout_toLeftOf="@+id/crossIcon"
                 android:layout_toRightOf="@+id/itemIcon"
                 android:text="FROM "
-                android:textColor="#696464"
+                android:textColor="@color/WhiteText"
                 android:textSize="15.0dip"
                 android:layout_marginTop="20.0dip"/>
 
@@ -62,7 +62,7 @@
                 android:hint="Source"
                 android:paddingRight="30.0dip"
                 android:singleLine="true"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:textColorHint="#d8d2d2"
                 android:textSize="15.0dip" />
 
@@ -74,7 +74,7 @@
                 android:layout_toLeftOf="@+id/crossIcon"
                 android:layout_toRightOf="@+id/itemIcon"
                 android:text="TO "
-                android:textColor="#696464"
+                android:textColor="@color/WhiteText"
                 android:textSize="15.0dip"
                 android:layout_below="@+id/Fsource"
                 android:layout_marginTop="10.0dip"/>
@@ -89,7 +89,7 @@
                 android:hint="Destination"
                 android:paddingRight="30.0dip"
                 android:singleLine="true"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:textColorHint="#d8d2d2"
                 android:textSize="15.0dip" />
 
@@ -100,7 +100,7 @@
                 android:layout_marginLeft="15.0dip"
                 android:layout_toRightOf="@+id/addStopOver"
                 android:text="BOARDING POINTS"
-                android:textColor="#696464"
+                android:textColor="@color/WhiteText"
                 android:textSize="16.0dip"
                 android:layout_below="@+id/Fdestination"
                 android:layout_marginTop="10.0dip"/>
@@ -114,7 +114,7 @@
                 android:layout_toRightOf="@+id/addStopOver"
                 android:hint="Stopover"
                 android:singleLine="true"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:textColorHint="#d8d2d2"
                 android:textSize="15.0dip" />
 
@@ -140,10 +140,10 @@
         <RelativeLayout
             android:id="@+id/returnJourneyLayout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_below="@+id/sourceDestinationLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip">
 
             <!--  <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15.0dip"
                 android:text="START DATE "
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible" />
 
@@ -179,22 +179,23 @@
                 android:paddingRight="30.0dip"
                 android:textColorHint="#d8d2d2"
                 android:textSize="12.0dip"
-                android:textColor="@color/DarkGrey"/>
+                android:textColor="@color/WhiteText"/>
 
 
-
+            <Button
+                android:id="@+id/Fsearch"
+                android:layout_width="match_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@+id/Fdate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100.0dip"
+                android:background="@drawable/roundbutton"
+                android:text="Find Ride"
+                android:textColor="#FFFFFF"
+                android:textSize="25.0dip"
+                />
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/Fsearch"
-            android:layout_width="match_parent"
-            android:layout_height="50.0dip"
-            android:layout_below="@+id/returnJourneyLayout"
-            android:layout_marginTop="25.0dip"
-            android:background="@color/colorBase"
-            android:text="Find Ride"
-            android:textColor="#FFFFFF"
-            android:textSize="25.0dip"
-            android:onClick="Fsearch"/>
+
     </RelativeLayout>
 </ScrollView>

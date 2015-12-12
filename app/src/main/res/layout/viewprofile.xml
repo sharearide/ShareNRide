@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-android:background="@color/DarkGreyBackground"
+    android:background="@color/DarkGreyBackground"
     >
 
     <RelativeLayout
@@ -28,14 +28,23 @@ android:background="@color/DarkGreyBackground"
             android:background="@color/blackText"
             android:padding="20.0dip"
             android:layout_marginTop="30.0dip">
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[edit]"
+                android:textColor="@color/WhiteText"
+                android:id="@+id/edit_name"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Full Name: "
                 android:id="@+id/Tname"
                 android:textColor="@color/LightTextColor"
-                android:textSize="15.0dip"/>
+                android:textSize="15.0dip"
+                android:layout_below="@id/edit_name"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +52,8 @@ android:background="@color/DarkGreyBackground"
                 android:layout_alignBaseline="@+id/Tname"
                 android:textSize="15.0dip"
                 android:id="@+id/Pname"
-                android:textColor="@color/WhiteText" />
+                android:textColor="@color/WhiteText"
+                android:text="Test"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,14 +109,23 @@ android:background="@color/DarkGreyBackground"
                   android:text="IS THIS A RETURNING JOURNEY?"
                   android:textColor="#4780e1"
                   android:textSize="15.0dip" />-->
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[edit]"
+                android:textColor="@color/WhiteText"
+                android:id="@+id/edit_email"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email: "
                 android:id="@+id/Temail"
                 android:textColor="@color/LightTextColor"
-                android:textSize="15.0dip"/>
+                android:textSize="15.0dip"
+                android:layout_below="@+id/edit_email"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,27 +134,12 @@ android:background="@color/DarkGreyBackground"
                 android:textSize="15.0dip"
                 android:id="@+id/Pemail"
                 android:textColor="@color/WhiteText"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:text="test@gmail.com"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password: "
-                android:id="@+id/Tpass"
-                android:textColor="@color/LightTextColor"
-                android:textSize="15.0dip"
-                android:layout_below="@+id/Temail"
-                android:layout_marginTop="30.0dip"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/Tpass"
-                android:layout_alignBaseline="@+id/Tpass"
-                android:textSize="15.0dip"
-                android:id="@+id/Ppass"
-                android:inputType="textPassword"
-                android:textColor="@color/WhiteText" />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -143,20 +147,20 @@ android:background="@color/DarkGreyBackground"
                 android:id="@+id/Tmobile"
                 android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
-                android:layout_below="@+id/Tpass"
+                android:layout_below="@+id/Pemail"
                 android:layout_marginTop="30.0dip"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/Tpass"
+                android:layout_toRightOf="@+id/Tmobile"
                 android:layout_alignBaseline="@+id/Tmobile"
                 android:textSize="15.0dip"
                 android:id="@+id/Pmobile"
                 android:inputType="phone"
                 android:textColor="@color/WhiteText"
                 android:ems="10"
-                android:visibility="visible"/>
+                android:text="9876543210"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -181,18 +185,20 @@ android:background="@color/DarkGreyBackground"
                 android:layout_height="150.0dip"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/user"
-                android:id="@+id/userimage"/>
+                android:id="@+id/userimage"
+                android:clickable="true"/>
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="50.0dip"
                 android:layout_below="@+id/userimage"
                 android:layout_marginTop="25.0dip"
                 android:background="@drawable/roundbutton"
-                android:text="Register"
+                android:text="Update"
                 android:textColor="#FFFFFF"
-                android:textSize="25.0dip" />
+                android:textSize="25.0dip"
+                android:visibility="invisible"/>
         </RelativeLayout>
 
 

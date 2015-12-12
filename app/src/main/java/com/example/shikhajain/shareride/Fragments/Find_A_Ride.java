@@ -6,10 +6,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,6 +22,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.shikhajain.shareride.AutoComplete.PlaceJSONParser;
+import com.example.shikhajain.shareride.Interface.Communicator;
 import com.example.shikhajain.shareride.R;
 
 import org.json.JSONObject;
@@ -51,7 +50,8 @@ public class Find_A_Ride extends Fragment implements View.OnClickListener, View.
     AutoCompleteTextView Fsource,Fdestination, Fboarding;
             EditText Fdate;
     ImageButton FsourceX,FdestinationX;
-   // Button Search;
+
+   Button Search;
     private DatePickerDialog FPickDate;
     private SimpleDateFormat dateFormatter;
     PlacesTask placesTask;
@@ -59,10 +59,17 @@ public class Find_A_Ride extends Fragment implements View.OnClickListener, View.
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     Geocoder geoCoder;
+    private Communicator communicator;
 
 
     public Find_A_Ride() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicator= (Communicator) getActivity();
     }
 
     public static Find_A_Ride newInstance(String param1, String param2) {
@@ -87,10 +94,10 @@ public class Find_A_Ride extends Fragment implements View.OnClickListener, View.
         Fdate=(EditText) v.findViewById(R.id.Fdate);
         FsourceX= (ImageButton) v.findViewById(R.id.FsourceX);
         FdestinationX= (ImageButton) v.findViewById(R.id.FdestinationX);
-       // Search= (Button) v.findViewById(R.id.Fsearch);
+        Search= (Button) v.findViewById(R.id.Fsearch);
         FsourceX.setOnClickListener(this);
         FdestinationX.setOnClickListener(this);
-        //Search.setOnClickListener(this);
+        Search.setOnClickListener(this);
         Fdate.setOnClickListener(this);
         setDateTimeField();
         Fdate.setOnFocusChangeListener(this);
@@ -189,6 +196,31 @@ public class Find_A_Ride extends Fragment implements View.OnClickListener, View.
                 Fdestination.setText("");
                 break;
 
+            case R.id.Fsearch:
+
+                //if(Fsource.getText().toString())
+                Log.d("data",Fsource.getText().toString() +""+ Fdestination.getText()+""+ Fboarding.getText()+""+ Fdate.getText());
+                if(!Fsource.getText().toString().equals("") &&
+                        !Fdestination.getText().toString().equals("") &&
+                        !Fboarding.getText().toString().equals("") &&
+                !Fdate.getText().toString().equals(""))
+                {
+                    Toast.makeText(getActivity(),"all the details entered",Toast.LENGTH_SHORT).show();
+                    String FindARideDeatils[]=new String[4];
+                    FindARideDeatils[0]=Fsource.getText().toString();
+                    FindARideDeatils[1]=Fdestination.getText().toString();
+                    FindARideDeatils[2]=Fdate.getText().toString();
+                    FindARideDeatils[3]="";
+                    communicator.Fsearch(FindARideDeatils);
+
+                }
+                else
+                {
+                    Toast.makeText(getActivity(),"enter all the details",Toast.LENGTH_SHORT).show();
+                }
+
+
+                break;
 
            /* case R.id.Fsearch:
                 //Find_A_Ride find_a_ride=new Find_A_Ride();

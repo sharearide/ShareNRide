@@ -52,7 +52,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
     public ViewHolderSearch onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = layoutInflater.inflate(R.layout.each_user_view1, parent, false);
-        ViewHolderSearch viewHolderSearch = new ViewHolderSearch(view);
+        ViewHolderSearch viewHolderSearch = new ViewHolderSearch(view,each_users);
         return viewHolderSearch;
 
     }
@@ -62,8 +62,11 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
         Log.d("on bind position",position+"");
         Each_User each_user2 = each_users.get(position);
         holder.Uname.setText(each_user2.getUname());
-
-
+        holder.Usource.setText(each_user2.getUsource());
+        holder.Udestination.setText(each_user2.getUdestination());
+        holder.Useat.setText(each_user2.getUseat()+" seats available");
+        holder.Ufare.setText("Fare: Rs." +each_user2.getUfare());
+        holder.Utime.setText("At "+ each_user2.getUtime());
     }
 
 
@@ -80,7 +83,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
 
         TextView Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
         ImageView Uimage;
-        public ViewHolderSearch(View itemView) {
+        public ViewHolderSearch(View itemView, ArrayList<Each_User> each_users) {
 
 
 

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/book_a_ride"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/blackText">
 
     <include
         android:id="@+id/each_user_view"
         layout="@layout/each_user_view1"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-
+        android:layout_marginTop="10.0dip"
         >
 
     </include>
@@ -19,21 +20,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number Of Seats"
-        android:id="@+id/textView5" />
+        android:id="@+id/textView5"
+        android:layout_below="@+id/each_user_view"
+        android:layout_marginTop="20.0dip"
+        android:textColor="@color/LightTextColor"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/Seat_Check" />
+        android:id="@+id/Seat_Check"
+        android:layout_below="@+id/textView5"
+        android:textColor="@color/WhiteText"
+        android:hint="Enter Number of Seat"/>
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="200.0dip"
         android:layout_height="wrap_content"
         android:text="Book Ride"
-        android:id="@+id/book_ride" />
+        android:id="@+id/book_ride"
+        android:background="@drawable/roundbutton"
+        android:textColor="@color/WhiteText"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/Seat_Check"
+        android:layout_marginTop="20.0dip"
+        />
 
 
-</LinearLayout>
+</RelativeLayout>

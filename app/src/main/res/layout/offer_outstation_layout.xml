@@ -10,14 +10,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#c7c1c1"
+        android:background="@color/DarkGreyBackground"
         android:nestedScrollingEnabled="true">
 
         <RelativeLayout
             android:id="@+id/sourceDestinationLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip">
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SELECT SOURCE AND DESTINATION"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip" />
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/sourceDestinationLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="20.0dip">
 
           <!--  <com.example.shikhajain.shareride.commonui.RydeTextView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15.0dip"
                 android:text="START DATE "
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible" />
 
@@ -115,14 +115,14 @@
                 android:paddingRight="30.0dip"
                 android:textColorHint="#d8d2d2"
                 android:textSize="12.0dip"
-                android:textColor="@color/DarkGrey"/>
+                android:textColor="@color/WhiteText"/>
 
             <com.example.shikhajain.shareride.commonui.RydeTextView
                 android:id="@+id/startTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="START TIME"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible"
                 android:layout_alignTop="@+id/startDateTimeLabel"
@@ -145,7 +145,7 @@
                 android:textColorHint="#d8d2d2"
                 android:textSize="12.0dip"
                 android:layout_marginLeft="20.0dip"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:layout_toRightOf="@+id/startDateTimeEditText"/>
             <!-- <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="20.0dip" android:textColor="#817a7a" android:id="@+id/startDateCalender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentLeft="true" />
              <com.example.shikhajain.shareride.commonui.RydeTextView android:textSize="12.0dip" android:textColor="#d8d2d2" android:id="@+id/startTimeDropDown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@+id/startDateTimeLabel" android:layout_alignBaseline="@+id/startDateTimeEditText" android:layout_alignParentRight="true" />
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="Vehicle Type"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible"
                 android:layout_below="@+id/startDateTimeEditText"
@@ -181,12 +181,11 @@
                 android:id="@+id/vehicleType"
                 android:layout_toEndOf="@+id/startDateTimeLabel"
                 android:layout_toRightOf="@+id/vehicleTypeLabel"
-                android:textColor="@color/DarkGrey"
-                android:textSize="15.0dip"
-                android:layout_below="@+id/startDateTimeEditText"
+                android:textSize="12.0dip"
                 android:layout_alignBottom="@+id/vehicleTypeLabel"
                 android:spinnerMode="dropdown"
-                android:entries="@array/tabs"/>
+                android:entries="@array/tabs"
+                android:layout_below="@+id/startDateTimeEditText" />
 
         </RelativeLayout>
 
@@ -196,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/returnJourneyLayout"
             android:layout_marginTop="25.0dip"
-            android:background="#FFFFFF"
+            android:background="@color/blackText"
             android:padding="15.0dip">
 
 
@@ -206,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="Available Seats"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible" />
 
@@ -234,7 +233,7 @@
                 android:id="@+id/availseatEditText"
                 android:layout_toRightOf="@+id/plusseat"
                 android:visibility="visible"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:text="3"
                 android:layout_marginLeft="10dip"
                 android:textAlignment="center"/>
@@ -256,7 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="Price for Seats"
-                android:textColor="#4780e1"
+                android:textColor="@color/LightTextColor"
                 android:textSize="15.0dip"
                 android:visibility="visible"
                 android:layout_below="@+id/availseat"
@@ -290,7 +289,7 @@
                 android:text="Rs:"
                 android:layout_toRightOf="@+id/plusprice"
                 android:layout_alignBaseline="@+id/priceseat"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:layout_marginLeft="5dip"
                 />
             <EditText
@@ -299,7 +298,7 @@
                 android:id="@+id/priceseatEditText"
                 android:layout_toRightOf="@+id/plusprice"
                 android:visibility="visible"
-                android:textColor="@color/DarkGrey"
+                android:textColor="@color/WhiteText"
                 android:text="10"
                 android:layout_marginLeft="15dip"
                 android:textAlignment="center"
@@ -327,14 +326,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/repeatRelativeLayout"
         android:layout_marginTop="25.0dip"
-        android:background="#FFFFFF"
+        android:background="@color/blackText"
         android:padding="15.0dip">
 
         <com.example.shikhajain.shareride.commonui.RydeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Remarks"
-            android:textColor="#4780e1"
+            android:textColor="@color/LightTextColor"
             android:id="@+id/remtext"/>
 
         <EditText
@@ -345,21 +344,22 @@
             android:hint="Write Instructions for Passengers if any."
             android:textColorHint="#d8d2d2"
             android:textSize="12.0dip"
-            android:textColor="#c7c1c1"
+            android:textColor="@color/WhiteText"
+            android:id="@+id/Rcomment"
             />
-
-
-        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="50.0dip"
-            android:layout_below="@+id/Comment"
-            android:layout_marginTop="5.0dip"
-            android:background="@color/colorBase"
+            android:layout_below="@+id/Rcomment"
+            android:layout_marginTop="15.0dip"
+            android:background="@drawable/roundbutton"
             android:text="Publish Ride"
             android:textColor="#FFFFFF"
             android:textSize="25.0dip" />
+        </RelativeLayout>
+
+
     </RelativeLayout>
 </ScrollView>
