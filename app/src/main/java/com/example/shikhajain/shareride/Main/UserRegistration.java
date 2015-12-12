@@ -17,6 +17,7 @@ import com.example.shikhajain.shareride.R;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.regex.Matcher;
@@ -40,6 +41,10 @@ public class UserRegistration extends Activity implements View.OnClickListener {
     EditText Pname, Pemail,Ppass,Pmobile;
     private RadioGroup GenderGroup;
     private RadioButton GenderButton;
+    String error_message,error,u_id;
+    public static String U_id="U_id";
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
@@ -91,7 +96,46 @@ public class UserRegistration extends Activity implements View.OnClickListener {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
 
-                    Log.d("register",response+"");
+                    Log.d("register", response + "");
+                    try {
+                        error = response.getString("error");
+                        if (error.equals("0")) {
+                            u_id = response.getString("id");
+                            error_message = response.getString("error_msg");
+
+                            if (!u_id.equals("0") && error_message.equals("User registered successfully.")) {
+                                Login.sharedPreferencesLoginStatus= getSharedPreferences(Login.loginStatus, MODE_PRIVATE);
+                                Login.editor = Login.sharedPreferencesLoginStatus.edit();
+
+//Set "hasLoggedIn" to true
+                                Login.editor.putString("U_id",u_id);
+
+// Commit the edits!
+                                Login.editor.commit();
+
+
+                            }
+
+                        } else {
+                            if (error.equals("1")) {
+                                error_message = response.getString("error_msg");
+                                if (error_message.equals("User Email already exist")) {
+                                    Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Phone Number registerd with another email id", Toast.LENGTH_SHORT).show();
+
+                                }
+
+
+                            }
+
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
 
                 @Override
@@ -101,8 +145,8 @@ public class UserRegistration extends Activity implements View.OnClickListener {
 
                 @Override
                 protected JSONObject parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
-                    Log.d("register response",rawJsonData);
-                    JSONObject jsonObject=new JSONObject(rawJsonData);
+                    Log.d("register response", rawJsonData);
+                    JSONObject jsonObject = new JSONObject(rawJsonData);
                     return jsonObject;
                 }
             });

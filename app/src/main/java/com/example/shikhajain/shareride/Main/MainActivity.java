@@ -216,6 +216,7 @@ public class MainActivity extends FragmentActivity implements Communicator{
 
 //Set "hasLoggedIn" to true
                 Login.editor.putBoolean("hasLoggedIn", false);
+				Login.editor.putString("U_id","0");
 
 // Commit the edits!
                 Login.editor.commit();
