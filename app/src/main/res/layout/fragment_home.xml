@@ -7,7 +7,7 @@
     <ImageView android:layout_width="400dip"
         android:layout_height="400dip"
         android:id="@+id/icon_sr"
-        android:src="@mipmap/ic_sr"
+        android:src="@mipmap/icon_sr"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 
