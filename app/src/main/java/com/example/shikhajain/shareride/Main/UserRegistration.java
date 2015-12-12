@@ -2,7 +2,6 @@ package com.example.shikhajain.shareride.Main;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -13,25 +12,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-
+import com.example.shikhajain.shareride.Network.GetData;
 import com.example.shikhajain.shareride.R;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
-import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by Shikha on 06-11-2015.
@@ -78,8 +69,7 @@ public class UserRegistration extends Activity implements View.OnClickListener {
                 break;
         }
     }
-    public void send_UserData()
-    {
+    public void send_UserData() {
         // if (req_id == res_id) {
         //   Bundle b1 = io.getExtras();
 
@@ -89,8 +79,36 @@ public class UserRegistration extends Activity implements View.OnClickListener {
         //------- end validation
         if (flag = true) {
 
+            RequestParams requestParams = new RequestParams();
 
-            HttpClient hclient = new DefaultHttpClient();
+            requestParams.add("name", Pname.getText().toString());
+            requestParams.add("email", Pemail.getText().toString());
+            requestParams.add("mobile", Pmobile.getText().toString());
+            requestParams.add("password", Ppass.getText().toString());
+            requestParams.add("gender", GenderButton.getText().toString());
+            requestParams.add("status", "1");
+            GetData.post("register", requestParams, new BaseJsonHttpResponseHandler<JSONObject>() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
+
+                    Log.d("register",response+"");
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, JSONObject errorResponse) {
+
+                }
+
+                @Override
+                protected JSONObject parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                    Log.d("register response",rawJsonData);
+                    JSONObject jsonObject=new JSONObject(rawJsonData);
+                    return jsonObject;
+                }
+            });
+
+
+/*            HttpClient hclient = new DefaultHttpClient();
             HttpPost post_url = new HttpPost("http://allrounderservices.com/mypool/register.php");
 
             List<NameValuePair> data_list = new ArrayList<NameValuePair>();
@@ -130,6 +148,7 @@ public class UserRegistration extends Activity implements View.OnClickListener {
                 System.err.println(e);
             }
 
+        }*/
         }
     }
 
