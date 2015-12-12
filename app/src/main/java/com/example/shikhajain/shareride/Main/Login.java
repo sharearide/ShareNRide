@@ -6,6 +6,8 @@ package com.example.shikhajain.shareride.Main;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
@@ -24,6 +26,8 @@ import android.widget.Toast;
 import com.example.shikhajain.shareride.Network.GetData;
 import com.example.shikhajain.shareride.POJO.User_Login_Details;
 import com.example.shikhajain.shareride.R;
+import com.example.shikhajain.shareride.notification.RegistrationIntentService;
+import com.example.shikhajain.shareride.notification.WakeLocker;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -88,6 +92,7 @@ public class Login extends Activity implements View.OnClickListener
         getActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.colorBase));
         setlayout();
         getvariables();
+        GCM_ID();
        /* fbkey();
         callbackManager = CallbackManager.Factory.create();
         loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
@@ -105,6 +110,14 @@ public class Login extends Activity implements View.OnClickListener
 
 
     }
+
+    private void GCM_ID(){
+
+       // Intent intent = new Intent(this, RegistrationIntentService.class);
+      //  startService(intent);
+
+    }
+
 
     private void fbkey() {
         try {

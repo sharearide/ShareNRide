@@ -258,9 +258,7 @@ public class Search_Results_Car extends Fragment {
 
                         Log.d("list size is", each_users.size() + "");
 
-
                     }
-
 
                     adapterSearchResult = new AdapterSearchResult(getActivity(), each_users);
                     SeachView.setAdapter(adapterSearchResult);
@@ -273,14 +271,14 @@ public class Search_Results_Car extends Fragment {
 
 /*
                 {
-                    "error": 0,
                         "rides": [
                     {
                         "id": "7",
                             "userId": "1",
                             "source": "AWADHPURI",
                             "destination": "MP NAGAR",
-                            "date": "2015-09-19",
+                         "error": 0,
+                       "date": "2015-09-19",
                             "time": "06:59:59",
                             "latitude": "23.2376957",
                             "longitude": "77.4927514",

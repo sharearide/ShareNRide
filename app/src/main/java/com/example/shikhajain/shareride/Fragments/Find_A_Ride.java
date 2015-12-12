@@ -269,10 +269,6 @@ public class Find_A_Ride extends Fragment implements View.OnClickListener, View.
         {
             Toast.makeText(getActivity(),"enter all the data",Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     }
 
     public void convertAddress(String address) {

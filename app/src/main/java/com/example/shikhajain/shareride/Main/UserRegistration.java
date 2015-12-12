@@ -181,7 +181,7 @@ public class UserRegistration extends Activity implements View.OnClickListener {
                 }
                 else {
                     Toast.makeText(this, "User Registered Successfully", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(this, Login.class);
+                    Intent i = new Intent(this, OTPActivity.class);
                     // i.putExtra("EmailKey", Pemail.getText().toString());
                     startActivity(i);
                     UserRegistration.this.finish();
