@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shikhajain.shareride.Network.GetData;
+import com.example.shikhajain.shareride.POJO.User_Login_Details;
 import com.example.shikhajain.shareride.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -40,11 +41,13 @@ import com.google.android.gms.plus.model.people.Person;
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -61,6 +64,8 @@ public class Login extends Activity implements View.OnClickListener
     static String loginStatus="loginStatus";
     static SharedPreferences sharedPreferencesLoginStatus;
      static SharedPreferences.Editor editor;
+    ArrayList<User_Login_Details> user_login_details=new ArrayList<>();
+
 
 
     Button login, fblogin, signup;
@@ -69,7 +74,7 @@ public class Login extends Activity implements View.OnClickListener
     ProgressDialog progressDialog;
 
     String name, pass,facebookname, fid, femail, id, headerCode, errorMessage, U_verified,
-            U_name, U_email, U_police, U_address, U_number, U_landmark, U_image,U_gender;
+            U_name, U_email, U_police, U_address, U_number, U_landmark, U_image,U_gender,U_id;
 
     String GpersonName="",GpersonPhotoUrl="",GpersonGooglePlusProfile="";
 
@@ -177,6 +182,39 @@ public class Login extends Activity implements View.OnClickListener
                                 String error=response.getString("error");
 
                                 if(error.equals("0")) {
+
+                                    JSONArray user_details=response.getJSONArray("user_details");
+
+                                    for(int i=0;i<user_details.length();i++)
+                                    {
+                                        JSONObject data= user_details.getJSONObject(i);
+                                      U_id=data.getString("id");
+
+
+                                    }
+
+                                    Login.sharedPreferencesLoginStatus= getSharedPreferences(Login.loginStatus, MODE_PRIVATE);
+                                    Login.editor = Login.sharedPreferencesLoginStatus.edit();
+
+//Set "hasLoggedIn" to true
+                                    Login.editor.putString("U_id",U_id);
+
+// Commit the edits!
+                                    Login.editor.commit();
+
+/*
+
+                                    "id": "3",
+                                            "name": "sanjay",
+                                            "email": "sanjay@gmail.com",
+                                            "mobile": "9754476781",
+                                            "password": "sanjay",
+                                            "salt": "",
+                                            "gender": "Male",
+                                            "status": "0",
+                                            "created_at": "2015-11-01 09:58:43",
+                                            "updated_at": "0000-00-00 00:00:00"
+*/
 
                                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(i);
@@ -497,9 +535,12 @@ public class Login extends Activity implements View.OnClickListener
 
     private void login() {
 
+
         sharedPreferencesLoginStatus = getSharedPreferences(Login.loginStatus, 0);
         boolean hasLoggedIn = sharedPreferencesLoginStatus.getBoolean("hasLoggedIn", false);
         if (hasLoggedIn) {
+            String id=sharedPreferencesLoginStatus.getString("U_id","0");
+            Log.d("user id is",id);
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             Login.this.finish();
