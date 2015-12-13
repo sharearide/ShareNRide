@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import com.example.shikhajain.shareride.Main.OTPActivity;
-
 /**
  * Created by i ball on 12/12/2015.
  */
@@ -37,7 +35,7 @@ public  class SmsListener extends BroadcastReceiver {
 
                         Log.e("", msgBody);
 
-                        if(msg_from.equalsIgnoreCase("BW-ALRNDR")) {
+                        if(msg_from.equalsIgnoreCase("RM-ALRNDR")) {
                             Log.e("", msgBody);
 
                            // OTPActivity otpActivity = new OTPActivity();

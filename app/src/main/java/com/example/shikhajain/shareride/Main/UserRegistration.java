@@ -2,6 +2,7 @@ package com.example.shikhajain.shareride.Main;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -82,7 +83,10 @@ public class UserRegistration extends Activity implements View.OnClickListener {
         Boolean flag = datavalidation();
 
         //------- end validation
-        if (flag = true) {
+        if (flag == true) {
+
+            /*if(!Pname.getText().toString().equals("") && !Pemail.toString().equals("") && !Ppass.toString().equals("")
+            && !Pmobile.toString().equals(""))*/
 
             RequestParams requestParams = new RequestParams();
 
@@ -108,10 +112,14 @@ public class UserRegistration extends Activity implements View.OnClickListener {
                                 Login.editor = Login.sharedPreferencesLoginStatus.edit();
 
 //Set "hasLoggedIn" to true
-                                Login.editor.putString("U_id",u_id);
+                                Login.editor.putString("U_id", u_id);
 
 // Commit the edits!
                                 Login.editor.commit();
+
+                                Intent i=new Intent(getApplicationContext(),OTPActivity.class);
+                                startActivity(i);
+                                UserRegistration.this.finish();
 
 
                             }
