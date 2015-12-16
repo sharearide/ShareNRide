@@ -8,11 +8,12 @@ import android.os.Parcelable;
  */
 public class Each_User implements Parcelable{
 
-    String Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
+    String Uid, Uname,Uwork,Useat,Ucar,Ufare,Utime,Usource,Udestination;
 
-    public Each_User(String uame,String uwork,String useat,String ucar,String ufare,String utime,String usource,String udestination)
+    public Each_User(String uid, String uame,String uwork,String useat,String ucar,String ufare,String utime,String usource,String udestination)
     {
 
+        this.Uid = uid;
         this.Uname = uame;
         this.Uwork = uwork;
         this.Useat = useat;
@@ -24,6 +25,9 @@ public class Each_User implements Parcelable{
 
     }
 
+    public String getUid() {
+        return Uid;
+    }
     public String getUname() {
         return Uname;
     }

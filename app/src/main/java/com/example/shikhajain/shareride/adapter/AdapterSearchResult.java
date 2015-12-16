@@ -59,9 +59,15 @@ public class AdapterSearchResult extends RecyclerView.Adapter<AdapterSearchResul
 
     @Override
     public void onBindViewHolder(ViewHolderSearch holder, int position) {
-        Log.d("on bind position",position+"");
+        Log.d("on bind position", position + "");
         Each_User each_user2 = each_users.get(position);
         holder.Uname.setText(each_user2.getUname());
+        holder.Useat.setText(each_user2.getUseat()+"seats available");
+        holder.Ucar.setText(each_user2.getUcar());
+        holder.Ufare.setText("Fare: "+ each_user2.getUfare());
+        holder.Utime.setText("Time: "+each_user2.getUtime());
+        holder.Usource.setText(each_user2.getUsource());
+        holder.Udestination.setText(each_user2.getUdestination());
 
 
     }

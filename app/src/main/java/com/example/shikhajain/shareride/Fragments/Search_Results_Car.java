@@ -236,7 +236,8 @@ public class Search_Results_Car extends Fragment {
                     for (int i = 0; i < rides.length(); i++) {
                         ;
                         JSONObject data = rides.getJSONObject(i);
-                        String Uname = data.getString("id");
+                        String Uid = data.getString("id");
+                        String Uname = data.getString("userId");
                         String source = data.getString("source");
                         String destination = data.getString("destination");
                         String time = data.getString("time");
@@ -244,7 +245,7 @@ public class Search_Results_Car extends Fragment {
                         String fare = data.getString("fare");
                         Log.d("parsed data is", Uname + source + destination + time + seats + fare);
 
-                        Each_User each_user = new Each_User(Uname,"",seats,"",fare,time,source,destination);
+                        Each_User each_user = new Each_User(Uid,Uname,"",seats,"",fare,time,source,destination);
 
 /*                        each_user.setUname(Uname);
                         each_user.setUsource(source);
