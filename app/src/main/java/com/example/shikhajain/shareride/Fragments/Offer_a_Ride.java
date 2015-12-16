@@ -3,6 +3,7 @@ package com.example.shikhajain.shareride.Fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -89,6 +90,10 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
     private OnFragmentInteractionListener mListener;
     ImageButton SeatPlus, SeatMinus,PriceMinus,PricePlus;
     Button btnNext;
+
+    static SharedPreferences sharedPreferencesLoginStatus;
+    static String loginStatus="loginStatus";
+    String User_LoginID = "2";
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -138,7 +143,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         RDestination = (AutoCompleteTextView)destLoc.findViewById(R.id.currentLocation);
         RDestination.setHint("Destination");
        // RBoarding = (AutoCompleteTextView)boardLoc.findViewById(R.id.stopOverLocation);
-
+        User_LoginID = getUserID();
         RSource.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -517,7 +522,7 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         HttpPost post_url = new HttpPost("http://allrounderservices.com/mypool/offer_ride.php");
 
         List<NameValuePair> data_list = new ArrayList<NameValuePair>();
-        data_list.add(new BasicNameValuePair("userId", "1"));
+        data_list.add(new BasicNameValuePair("userId", User_LoginID));
         data_list.add(new BasicNameValuePair("source", RSource.getText().toString()));
         data_list.add(new BasicNameValuePair("destination", RDestination.getText().toString()));
         data_list.add(new BasicNameValuePair("date", RDate.getText().toString()));
@@ -547,5 +552,18 @@ public class Offer_a_Ride extends Fragment implements View.OnClickListener, View
         //}
         //else
         //  Log.d("Req_id",res_id+","+req_id);
+    }
+
+    private String getUserID() {
+
+
+        sharedPreferencesLoginStatus = getActivity().getSharedPreferences(Offer_a_Ride.loginStatus, 0);
+        boolean hasLoggedIn = sharedPreferencesLoginStatus.getBoolean("hasLoggedIn", false);
+        String id = null;
+        if (hasLoggedIn) {
+            id=sharedPreferencesLoginStatus.getString("U_id","0");
+            Log.d("user id offer ride", id);
+        }
+        return id;
     }
 }
