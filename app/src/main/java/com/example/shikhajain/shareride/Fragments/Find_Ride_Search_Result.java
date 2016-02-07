@@ -140,14 +140,14 @@ public void setArguments(String[] findARideDeatils)
 
                 case 1:
                     Log.d("call to","fagment 2");
-                    fragment= Search_Result_Two_Wheeler.newInstance("", "");
+                    fragment= Search_Result_Two_Wheeler.newInstance(RideDetails, "");
 
                     break;
 
 
                 case 2:
                     Log.d("call to","fagment 3");
-                    fragment= Search_Result_Bus.newInstance("", "");
+                    fragment= Search_Result_Bus.newInstance(RideDetails, "");
 
                     break;
 

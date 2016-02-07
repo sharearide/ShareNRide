@@ -68,7 +68,7 @@ public class BookARide extends Fragment implements View.OnClickListener {
             progressDialog.show();
             progressDialog.setCancelable(false);
             final RequestParams requestParams = new RequestParams();
-            requestParams.add("offer_ride_id", each_user.getUname());
+            requestParams.add("offer_ride_id", each_user.getUid());
 
             GetData.post(getResources().getString(R.string.Book_A_Ride_Seat_Check_Availablity), requestParams, new BaseJsonHttpResponseHandler<JSONObject>() {
                 @Override
@@ -77,7 +77,7 @@ public class BookARide extends Fragment implements View.OnClickListener {
                     Log.d("response for seat available is", response + "");
                     try {
 
-                        String x = response.getString("seats_available");
+                        String x = each_user.getUseat().toString(); //response.getString("seats_available");
                         seats_available = Integer.parseInt(x);
                         if (seats_available - seats_to_be_booked < 0) {
                             Toast.makeText(getContext(), "reduce the number of seats", Toast.LENGTH_SHORT).show();
@@ -89,7 +89,7 @@ public class BookARide extends Fragment implements View.OnClickListener {
                         }
 
 
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -117,8 +117,8 @@ public class BookARide extends Fragment implements View.OnClickListener {
 
     private void sendTheDetailsToServerForMapping() {
         RequestParams requestParams = new RequestParams();
-        requestParams.add("offer_ride_id", each_user.getUname());
-        requestParams.add("user_id","1");
+        requestParams.add("offer_ride_id", each_user.getUid());
+        requestParams.add("user_id",each_user.getUname());
         requestParams.add("no_seats",no_of_seats.getText().toString());
 
 //        offer_ride_id=20&=1&no_seats=2

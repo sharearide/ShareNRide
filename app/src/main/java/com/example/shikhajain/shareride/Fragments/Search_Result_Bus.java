@@ -16,10 +16,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.shikhajain.shareride.Interface.Communicator;
-import com.example.shikhajain.shareride.Network.GetData;
-import com.example.shikhajain.shareride.POJO.Each_User;
 import com.example.shikhajain.shareride.R;
 import com.example.shikhajain.shareride.adapter.AdapterSearchResult;
+import com.example.shikhajain.shareride.Network.GetData;
+import com.example.shikhajain.shareride.POJO.Each_User;
+
 import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -31,17 +32,16 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Search_Result_Bus.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link Search_Result_Bus#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Search_Result_Bus extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
+    // TODO: Rename parameter arguments, choose names that matchm
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -49,13 +49,18 @@ public class Search_Result_Bus extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    /*ListView result;
+    String data[]={"A","B","C"};*/
     RecyclerView SeachView;
+    //    SwipeRefreshLayout swipeRefreshLayout;
     AdapterSearchResult adapterSearchResult;
     //    Each_User each_user=new Each_User();
     ArrayList<Each_User> each_users = new ArrayList<>();
     ProgressDialog progressDialog;
     Communicator communicator;
 
+    String type;
+    String [] Ride_Details;
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -64,14 +69,32 @@ public class Search_Result_Bus extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Search_Result_Bus.
+     * @return A new instance of fragment Search_Results.
      */
     // TODO: Rename and change types and number of parameters
-    public static Search_Result_Bus newInstance(String param1, String param2) {
+    public static Search_Result_Bus newInstance(String[] param1, String param2) {
         Search_Result_Bus fragment = new Search_Result_Bus();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putStringArray("Ride_Details", param1);
+        args.putString("type", param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        communicator= (Communicator) getActivity();
+
+    }
+    public static Search_Result_Bus getInstance(int position)
+
+    {
+        Search_Result_Bus fragment = new Search_Result_Bus();
+        Bundle args = new Bundle();
+        args.putInt("position", position);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,25 +102,20 @@ public class Search_Result_Bus extends Fragment {
     public Search_Result_Bus() {
         // Required empty public constructor
     }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        communicator= (Communicator) getActivity();
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            Ride_Details = getArguments().getStringArray("Ride_Details");
+            type= getArguments().getString("type");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         Log.d("on create view ", "of card result called");
         each_users.clear();
         View v = inflater.inflate(R.layout.fragment_search__results, container, false);
@@ -177,7 +195,7 @@ public class Search_Result_Bus extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("on resume", "called");
-        DoJsonParsing();
+//        DoJsonParsing();
     }
 
     private void sendDataToMainActivity(int childPosition) {
@@ -200,9 +218,11 @@ public class Search_Result_Bus extends Fragment {
 
 
         final RequestParams requestParams = new RequestParams();
-        requestParams.add("Date", "04-08-2015");
-        requestParams.add("Source", "Nityanand Nagar, Mumbai, Maharashtra");
-        requestParams.add("Destination", "Nityanand Nagar, Mumbai, Maharashtra");
+        requestParams.add("Date", Ride_Details[2]);
+        requestParams.add("Source", Ride_Details[0]);
+        requestParams.add("Destination",Ride_Details[1]);
+
+
         GetData.post("request_ride", requestParams, new BaseJsonHttpResponseHandler<JSONObject>() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
@@ -232,16 +252,14 @@ public class Search_Result_Bus extends Fragment {
                         each_user.setUdestination(destination);
                         each_user.setUtime(time);
                         each_user.setUseat(seats);
-                        each_user.setUfare(fare);*/
+                    each_user.setUfare(fare);*/
 
                         each_users.add(each_user);
 
 
                         Log.d("list size is", each_users.size() + "");
 
-
                     }
-
 
                     adapterSearchResult = new AdapterSearchResult(getActivity(), each_users);
                     SeachView.setAdapter(adapterSearchResult);
@@ -254,14 +272,14 @@ public class Search_Result_Bus extends Fragment {
 
 /*
                 {
-                    "error": 0,
                         "rides": [
                     {
                         "id": "7",
                             "userId": "1",
                             "source": "AWADHPURI",
                             "destination": "MP NAGAR",
-                            "date": "2015-09-19",
+                         "error": 0,
+                       "date": "2015-09-19",
                             "time": "06:59:59",
                             "latitude": "23.2376957",
                             "longitude": "77.4927514",
@@ -289,10 +307,11 @@ public class Search_Result_Bus extends Fragment {
         });
 
     }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction(uri);
         }
     }
 
@@ -300,7 +319,7 @@ public class Search_Result_Bus extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-  //          mListener = (OnFragmentInteractionListener) activity;
+            //     mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -312,6 +331,29 @@ public class Search_Result_Bus extends Fragment {
         super.onDetach();
         mListener = null;
     }
+/*
+    @Override
+    public void onRefresh() {
+        refreshItems();
+
+    }
+
+    void refreshItems() {
+        // Load items
+        // ...
+
+        // Load complete
+        onItemsLoadComplete();
+    }
+
+    void onItemsLoadComplete() {
+        // Update the adapter and notify data set changed
+        // ...
+
+        // Stop refresh animation
+        swipeRefreshLayout.setRefreshing(false);
+    }*/
+
 
     /**
      * This interface must be implemented by activities that contain this

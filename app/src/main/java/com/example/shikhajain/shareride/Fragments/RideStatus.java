@@ -97,13 +97,13 @@ public class RideStatus extends Fragment implements MaterialTabListener {
             {
                 case 0:
                     Log.d("call to","fagment 1");
-                    fragment= Search_Result_Bus.newInstance("", "");
+                   // fragment= Search_Result_Bus.newInstance("", "");
                     break;
 
 
                 case 1:
                     Log.d("call to","fagment 2");
-                    fragment= Search_Result_Two_Wheeler.newInstance("", "");
+                  //  fragment= Search_Result_Two_Wheeler.newInstance("", "");
 
                     break;
 

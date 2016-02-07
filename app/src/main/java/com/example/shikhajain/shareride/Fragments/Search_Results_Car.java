@@ -252,7 +252,7 @@ public class Search_Results_Car extends Fragment {
                         each_user.setUdestination(destination);
                         each_user.setUtime(time);
                         each_user.setUseat(seats);
-                        each_user.setUfare(fare);*/
+                    each_user.setUfare(fare);*/
 
                         each_users.add(each_user);
 
